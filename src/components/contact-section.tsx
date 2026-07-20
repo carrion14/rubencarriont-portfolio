@@ -5,6 +5,8 @@ import { Mail, Globe, Send } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import ScrollReveal from "@/components/ui/scroll-reveal"
 
+const contactEmail = "rubencarrion6@gmail.com"
+
 export default function ContactSection({ onNavigate }: { onNavigate: (section: string) => void }) {
   void onNavigate
 
@@ -12,10 +14,26 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
   const contentRef = useScrollReveal<HTMLDivElement>()
   const [sent, setSent] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const name = String(formData.get("name") || "").trim()
+    const email = String(formData.get("email") || "").trim()
+    const message = String(formData.get("message") || "").trim()
+    const subject = `Nuevo mensaje desde rubencarriont.com${name ? ` - ${name}` : ""}`
+    const body = [
+      name ? `Nombre: ${name}` : null,
+      email ? `Email: ${email}` : null,
+      "",
+      message,
+    ].filter((line) => line !== null).join("\n")
+
+    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     setSent(true)
-    setTimeout(() => setSent(false), 3000)
+    form.reset()
+    setTimeout(() => setSent(false), 5000)
   }
 
   return (
@@ -42,11 +60,11 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
 
             <div className="space-y-3">
               <a
-                href="mailto:rubencarrion6@gmail.com"
+                href={`mailto:${contactEmail}`}
                 className="flex items-center gap-3 rounded-2xl bg-[rgba(255,255,255,0.5)] p-4 text-sm font-medium text-[#6e6e73] transition-all hover:bg-[rgba(255,255,255,0.7)]"
               >
                 <Mail className="h-5 w-5 text-[#0071e3] shrink-0" />
-                rubencarrion6@gmail.com
+                {contactEmail}
               </a>
               <a
                 href="https://www.linkedin.com/in/rubencarriontorres/"
@@ -62,18 +80,23 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <input
+              name="name"
               type="text"
               placeholder="Nombre"
+              autoComplete="name"
               required
               className="rounded-2xl bg-[rgba(255,255,255,0.5)] px-4 py-3.5 text-sm text-[#1d1d1f] placeholder:text-[#86868b] transition-all focus:bg-[rgba(255,255,255,0.7)] focus:outline-none focus:ring-2 focus:ring-[#0071e3]/30"
             />
             <input
+              name="email"
               type="email"
               placeholder="Email"
+              autoComplete="email"
               required
               className="rounded-2xl bg-[rgba(255,255,255,0.5)] px-4 py-3.5 text-sm text-[#1d1d1f] placeholder:text-[#86868b] transition-all focus:bg-[rgba(255,255,255,0.7)] focus:outline-none focus:ring-2 focus:ring-[#0071e3]/30"
             />
             <textarea
+              name="message"
               placeholder="Cuéntame tu idea..."
               rows={4}
               required
@@ -84,9 +107,14 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
               disabled={sent}
               className="flex items-center justify-center gap-2 rounded-2xl bg-[#0071e3] px-6 py-3.5 text-sm font-medium text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95 disabled:opacity-70"
             >
-              {sent ? "✓ Enviado" : "Enviar"}
+              {sent ? "Correo abierto" : "Enviar"}
               <Send className="h-4 w-4" />
             </button>
+            {sent && (
+              <p className="text-xs leading-relaxed text-[#86868b]" role="status">
+                Se ha abierto tu app de correo con el mensaje preparado. Revísalo y pulsa enviar para que llegue a {contactEmail}.
+              </p>
+            )}
           </form>
         </div>
       </div>

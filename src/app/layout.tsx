@@ -68,9 +68,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className="antialiased">
-      <head>
-        <link rel="icon" href="/img/brand/logo.png" type="image/png" />
-      </head>
       <body className="font-sans text-foreground">{children}</body>
     </html>
   )

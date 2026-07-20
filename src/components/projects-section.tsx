@@ -169,10 +169,35 @@ function BookViewer({ images }: { images: string[] }) {
 }
 
 function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null)
+  const touchMovedRef = useRef(false)
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "touch") return
+    touchStartRef.current = { x: e.clientX, y: e.clientY }
+    touchMovedRef.current = false
+  }
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "touch" || !touchStartRef.current) return
+    const dx = Math.abs(e.clientX - touchStartRef.current.x)
+    const dy = Math.abs(e.clientY - touchStartRef.current.y)
+    if (dx > 10 || dy > 10) touchMovedRef.current = true
+  }
+
+  const handleClick = () => {
+    if (touchMovedRef.current) {
+      touchMovedRef.current = false
+      return
+    }
+    onClick()
+  }
+
   return (
     <div
-      onClick={onClick}
-      onTouchEnd={(e) => { e.preventDefault(); onClick(); }}
+      onClick={handleClick}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}
@@ -207,10 +232,10 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   const [imgIndex, setImgIndex] = useState(0)
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    <div className="fixed inset-0 z-50 flex items-end justify-center p-2 sm:items-center sm:p-8" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="absolute inset-0 bg-[rgba(0,0,0,0.35)] backdrop-blur-2xl" />
       <div
-        className="relative z-10 mx-auto flex max-h-[85vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl"
+        className="relative z-10 mx-auto flex max-h-[calc(100dvh-1rem)] w-[calc(100vw-1rem)] max-w-5xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl sm:max-h-[85vh] sm:w-full"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -219,9 +244,9 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         >
           <X className="h-4 w-4" />
         </button>
-        <div className="flex flex-col md:flex-row md:overflow-hidden">
-          <div className="relative flex aspect-[4/3] w-full items-center justify-center bg-[rgba(0,0,0,0.02)] md:w-3/5 md:aspect-auto md:min-h-[60vh]">
-            <div className="flex h-full w-full items-center justify-center p-6">
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden md:flex-row md:overflow-hidden">
+          <div className="relative flex w-full shrink-0 items-center justify-center overflow-hidden bg-[rgba(0,0,0,0.02)] md:w-3/5 md:min-h-[60vh]">
+            <div className="flex w-full min-w-0 items-center justify-center p-3 sm:p-6 md:h-full">
               {project.hasBookAnimation ? (
                 <BookViewer images={project.images} />
               ) : (
@@ -260,7 +285,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               </>
             )}
           </div>
-          <div className="flex flex-col gap-4 overflow-y-auto p-7 md:w-2/5">
+          <div className="flex min-w-0 flex-col gap-4 p-5 sm:p-7 md:w-2/5 md:overflow-y-auto">
             <div>
               <p className="text-xs font-medium text-[#0071e3]">{project.year}</p>
               <h2 className="text-xl font-semibold text-[#1d1d1f]">{project.title}</h2>
