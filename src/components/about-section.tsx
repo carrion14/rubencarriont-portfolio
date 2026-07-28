@@ -43,7 +43,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
               textClassName="text-base leading-relaxed sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              Soy Rubén Carrión, diseñador gráfico con experiencia en branding, packaging y publicidad. Actualmente trabajo como IA Designer en Kärcher España, donde aplico inteligencia artificial al diseño y la automatización de procesos creativos.
+              Soy Rubén Carrión, diseñador gráfico con experiencia en branding, packaging y publicidad. Actualmente trabajo como IA Designer en Kärcher España, donde aplico inteligencia artificial al diseño y la automatización de procesos creativos. En mi equipo valoran especialmente mi rapidez, agilidad para sacar trabajo adelante y facilidad para adaptarme a las necesidades de cada proyecto.
             </ScrollReveal>
             <ScrollReveal
               baseOpacity={0.45}
