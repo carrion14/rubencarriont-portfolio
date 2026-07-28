@@ -38,7 +38,7 @@ export default function HeroSection({ onNavigate }: { onNavigate: (section: stri
         <div className="mb-6 overflow-hidden rounded-full border border-white/70 bg-white/45 p-1 shadow-[0_18px_50px_rgba(0,113,227,0.12)] backdrop-blur-2xl">
           <Image
             src="/img/brand/foto_perfil.png"
-            alt="Ruben Carrion"
+            alt="Rubén Carrión"
             width={96}
             height={96}
             priority
@@ -48,7 +48,7 @@ export default function HeroSection({ onNavigate }: { onNavigate: (section: stri
         </div>
 
         <h1 className="mb-2 text-5xl font-semibold tracking-tighter text-[#1d1d1f] sm:text-7xl md:text-8xl">
-          Ruben <span className="hero-name">Carrion</span>
+          Rubén <span className="hero-name">Carrión</span>
         </h1>
 
         <p className="mb-1 text-lg font-medium text-[#6e6e73] sm:text-xl">

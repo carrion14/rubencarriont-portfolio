@@ -12,7 +12,7 @@ import NavFloat, { useActiveSection } from "@/components/nav-float"
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Ruben Carrion",
+  name: "Rubén Carrión",
   url: "https://rubencarriont.com",
   image: "https://rubencarriont.com/img/brand/foto_perfil.png",
   jobTitle: "Disenador Grafico e IA Designer",

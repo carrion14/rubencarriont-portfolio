@@ -1,6 +1,6 @@
-# Ruben Carrion Portfolio
+# Rubén Carrión Portfolio
 
-Portfolio personal de Ruben Carrion, disenador grafico e IA Designer especializado en branding, campanas visuales, retail, contenido con IA y automatizacion creativa.
+Portfolio personal de Rubén Carrión, disenador grafico e IA Designer especializado en branding, campanas visuales, retail, contenido con IA y automatizacion creativa.
 
 ## Tecnologias
 

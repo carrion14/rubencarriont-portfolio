@@ -3,21 +3,21 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: "Ruben Carrion | Disenador Grafico e IA Designer",
-    template: "%s | Ruben Carrion",
+    default: "Rubén Carrión | Disenador Grafico e IA Designer",
+    template: "%s | Rubén Carrión",
   },
   description:
-    "Portfolio de Ruben Carrion, disenador grafico e IA Designer especializado en branding, campanas visuales, maquetacion, retail, contenido con IA y automatizacion creativa.",
+    "Portfolio de Rubén Carrión, disenador grafico e IA Designer especializado en branding, campanas visuales, maquetacion, retail, contenido con IA y automatizacion creativa.",
   metadataBase: new URL("https://rubencarriont.com"),
   alternates: {
     canonical: "/",
   },
-  applicationName: "Ruben Carrion Portfolio",
-  authors: [{ name: "Ruben Carrion", url: "https://rubencarriont.com" }],
-  creator: "Ruben Carrion",
-  publisher: "Ruben Carrion",
+  applicationName: "Rubén Carrión Portfolio",
+  authors: [{ name: "Rubén Carrión", url: "https://rubencarriont.com" }],
+  creator: "Rubén Carrión",
+  publisher: "Rubén Carrión",
   keywords: [
-    "Ruben Carrion",
+    "Rubén Carrión",
     "portfolio disenador grafico",
     "IA Designer",
     "branding",
@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     "Barcelona",
   ],
   openGraph: {
-    title: "Ruben Carrion | Disenador Grafico e IA Designer",
+    title: "Rubén Carrión | Disenador Grafico e IA Designer",
     description:
       "Diseno grafico, branding, retail, campanas visuales, contenido con IA y automatizacion creativa.",
     url: "/",
-    siteName: "Ruben Carrion Portfolio",
+    siteName: "Rubén Carrión Portfolio",
     locale: "es_ES",
     type: "website",
     images: [
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
         url: "/img/brand/foto_perfil.png",
         width: 1200,
         height: 1200,
-        alt: "Ruben Carrion",
+        alt: "Rubén Carrión",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ruben Carrion | Disenador Grafico e IA Designer",
+    title: "Rubén Carrión | Disenador Grafico e IA Designer",
     description:
       "Portfolio de diseno grafico, IA generativa, campanas visuales y automatizacion creativa.",
     images: ["/img/brand/foto_perfil.png"],
