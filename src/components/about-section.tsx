@@ -18,7 +18,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
             avatarUrl="/img/brand/foto_cara.png"
             miniAvatarUrl="/img/brand/foto_perfil.png"
             name="Rubén Carrión"
-            title="Diseñador Gráfico & IA Designer"
+            title="Diseñador gráfico, web e IA"
             handle="rubencarriont"
             status="Disponible"
             contactText="Contactar"
@@ -29,9 +29,9 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
 
         <div ref={contentRef} className="reveal reveal-delay-1 flex max-w-xl flex-col gap-6">
           <div>
-            <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Presentación</p>
+            <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Sobre mí</p>
             <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-              Sobre <span className="text-gradient">mí</span>
+              Diseñador polivalente, <span className="text-gradient">pero no genérico.</span>
             </h2>
           </div>
 
@@ -43,7 +43,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
               textClassName="text-base leading-relaxed sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              Soy Rubén Carrión, diseñador gráfico con experiencia en branding, packaging y publicidad. Actualmente trabajo como IA Designer en Kärcher España, donde aplico inteligencia artificial al diseño y la automatización de procesos creativos. En mi equipo valoran especialmente mi rapidez, agilidad para sacar trabajo adelante y facilidad para adaptarme a las necesidades de cada proyecto.
+              Llevo tres años trabajando en contextos reales de marca y producción visual: branding, packaging, maquetación, campañas, contenido y materiales para equipos comerciales o de marketing.
             </ScrollReveal>
             <ScrollReveal
               baseOpacity={0.45}
@@ -52,7 +52,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
               textClassName="text-base leading-relaxed sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              Especializado en diseño de envases, campañas visuales y maquetación editorial. Me formé en Producción Audiovisual y Diseño Gráfico, y ahora estoy metido de lleno en automatización con IA y desarrollo frontend.
+              En Kärcher España he creado y adaptado piezas para campañas, retail, Amazon, web, editorial e Instagram, coordinando diseño y publicación durante varios meses. También aplico IA generativa, desarrollo web y automatizaciones sencillas cuando ayudan a producir mejor y más rápido.
             </ScrollReveal>
             <ScrollReveal
               baseOpacity={0.45}
@@ -61,7 +61,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
               textClassName="text-base leading-relaxed sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              He trabajado con Kärcher, NTRSV, Xomega, Tecnocon, Bluesun, CPP Chemical Group y más. Mi enfoque: diseño con criterio, sin humo.
+              En los equipos donde he trabajado valoran mi rapidez, mi agilidad para sacar trabajo adelante y mi facilidad para orientarme a las necesidades del equipo. Vivo en Barcelona y puedo colaborar en remoto, híbrido o presencial.
             </ScrollReveal>
           </div>
 

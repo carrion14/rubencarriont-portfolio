@@ -1,17 +1,16 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Briefcase, FolderOpen, GraduationCap, Home, MessageSquare, Sparkles, User } from "lucide-react"
+import { Briefcase, FolderOpen, Home, MessageSquare, PanelsTopLeft, User } from "lucide-react"
 
 import Dock from "@/components/ui/dock"
 
 const sections = [
   { id: "hero", label: "Inicio", icon: Home },
+  { id: "services", label: "Servicios", icon: PanelsTopLeft },
+  { id: "projects", label: "Proyectos", icon: FolderOpen },
   { id: "about", label: "Sobre mí", icon: User },
   { id: "work", label: "Experiencia", icon: Briefcase },
-  { id: "skills", label: "Skills", icon: Sparkles },
-  { id: "education", label: "Formación", icon: GraduationCap },
-  { id: "projects", label: "Proyectos", icon: FolderOpen },
   { id: "contact", label: "Contacto", icon: MessageSquare },
 ]
 
@@ -34,9 +33,17 @@ export default function NavFloat({
   })
 
   return (
-    <nav className="fixed inset-x-0 bottom-3 z-50 flex justify-center px-3 sm:bottom-5">
-      <Dock items={items} panelHeight={70} baseItemSize={46} magnification={66} />
-    </nav>
+    <>
+      <button
+        onClick={() => onNavigate("contact")}
+        className="liquid-pill fixed right-4 top-4 z-50 px-4 py-2 text-xs font-semibold text-[#0071e3] shadow-[0_16px_40px_rgba(0,113,227,0.12)] transition-all hover:-translate-y-0.5 hover:text-[#005bb5] active:scale-95 sm:right-6 sm:top-6"
+      >
+        Hablemos
+      </button>
+      <nav className="fixed inset-x-0 bottom-3 z-50 flex justify-center px-3 sm:bottom-5">
+        <Dock items={items} panelHeight={70} baseItemSize={46} magnification={66} />
+      </nav>
+    </>
   )
 }
 

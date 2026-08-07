@@ -1,40 +1,27 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, Globe, Send } from "lucide-react"
+import { Globe, Mail, Send } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import ScrollReveal from "@/components/ui/scroll-reveal"
 
 const contactEmail = "rubencarrion6@gmail.com"
+
+type ContactReason = "freelance" | "employment"
+
+const inputClass =
+  "rounded-2xl bg-[rgba(255,255,255,0.55)] px-4 py-3.5 text-sm text-[#1d1d1f] placeholder:text-[#86868b] transition-all focus:bg-[rgba(255,255,255,0.76)] focus:outline-none focus:ring-2 focus:ring-[#0071e3]/30"
 
 export default function ContactSection({ onNavigate }: { onNavigate: (section: string) => void }) {
   void onNavigate
 
   const titleRef = useScrollReveal<HTMLDivElement>()
   const contentRef = useScrollReveal<HTMLDivElement>()
-  const [sent, setSent] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    const form = e.currentTarget
-    const formData = new FormData(form)
-    const name = String(formData.get("name") || "").trim()
-    const email = String(formData.get("email") || "").trim()
-    const message = String(formData.get("message") || "").trim()
-    const subject = `Nuevo mensaje desde rubencarriont.com${name ? ` - ${name}` : ""}`
-    const body = [
-      name ? `Nombre: ${name}` : null,
-      email ? `Email: ${email}` : null,
-      "",
-      message,
-    ].filter((line) => line !== null).join("\n")
-
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setSent(true)
-    form.reset()
-    setTimeout(() => setSent(false), 5000)
-  }
+  const [reason, setReason] = useState<ContactReason>("freelance")
+  const subject =
+    reason === "freelance"
+      ? "Consulta de proyecto desde rubencarriont.com"
+      : "Oportunidad profesional desde rubencarriont.com"
 
   return (
     <section className="relative flex w-full flex-col items-center justify-center px-8 py-24 sm:py-28">
@@ -42,7 +29,7 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
         <div ref={titleRef} className="reveal">
           <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Contacto</p>
           <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-            Hablemos
+            Hablemos sobre lo que necesitas
           </h2>
         </div>
 
@@ -55,7 +42,7 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
               textClassName="text-base leading-relaxed text-[#6e6e73] sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              ¿Tienes un proyecto en mente? ¿Necesitas diseño, branding o automatización con IA? Háblame sin compromiso.
+              Elige el motivo y cuéntame lo esencial. Te responderé con las preguntas necesarias o con el siguiente paso para avanzar.
             </ScrollReveal>
 
             <div className="space-y-3">
@@ -63,7 +50,7 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
                 href={`mailto:${contactEmail}`}
                 className="flex items-center gap-3 rounded-2xl bg-[rgba(255,255,255,0.5)] p-4 text-sm font-medium text-[#6e6e73] transition-all hover:bg-[rgba(255,255,255,0.7)]"
               >
-                <Mail className="h-5 w-5 text-[#0071e3] shrink-0" />
+                <Mail className="h-5 w-5 shrink-0 text-[#0071e3]" />
                 {contactEmail}
               </a>
               <a
@@ -72,49 +59,75 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 rounded-2xl bg-[rgba(255,255,255,0.5)] p-4 text-sm font-medium text-[#6e6e73] transition-all hover:bg-[rgba(255,255,255,0.7)]"
               >
-                <Globe className="h-5 w-5 text-[#0071e3] shrink-0" />
+                <Globe className="h-5 w-5 shrink-0 text-[#0071e3]" />
                 LinkedIn /rubencarriontorres
               </a>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form action={`https://formsubmit.co/${contactEmail}`} method="POST" className="flex flex-col gap-4">
+            <input type="hidden" name="_subject" value={subject} />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://rubencarriont.com/?contact=sent" />
             <input
-              name="name"
-              type="text"
-              placeholder="Nombre"
-              autoComplete="name"
-              required
-              className="rounded-2xl bg-[rgba(255,255,255,0.5)] px-4 py-3.5 text-sm text-[#1d1d1f] placeholder:text-[#86868b] transition-all focus:bg-[rgba(255,255,255,0.7)] focus:outline-none focus:ring-2 focus:ring-[#0071e3]/30"
+              type="hidden"
+              name="Motivo"
+              value={reason === "freelance" ? "Proyecto freelance o colaboración" : "Oportunidad profesional"}
             />
-            <input
-              name="email"
-              type="email"
-              placeholder="Email"
-              autoComplete="email"
-              required
-              className="rounded-2xl bg-[rgba(255,255,255,0.5)] px-4 py-3.5 text-sm text-[#1d1d1f] placeholder:text-[#86868b] transition-all focus:bg-[rgba(255,255,255,0.7)] focus:outline-none focus:ring-2 focus:ring-[#0071e3]/30"
-            />
-            <textarea
-              name="message"
-              placeholder="Cuéntame tu idea..."
-              rows={4}
-              required
-              className="rounded-2xl bg-[rgba(255,255,255,0.5)] px-4 py-3.5 text-sm text-[#1d1d1f] placeholder:text-[#86868b] transition-all focus:bg-[rgba(255,255,255,0.7)] focus:outline-none focus:ring-2 focus:ring-[#0071e3]/30"
-            />
+            <div className="grid gap-2 rounded-2xl bg-white/45 p-1 sm:grid-cols-2">
+              <button
+                type="button"
+                onClick={() => setReason("freelance")}
+                className={`rounded-xl px-4 py-3 text-sm font-semibold transition-all ${reason === "freelance" ? "bg-[#0071e3] text-white shadow-sm" : "text-[#6e6e73] hover:bg-white/45"}`}
+              >
+                Proyecto o colaboración
+              </button>
+              <button
+                type="button"
+                onClick={() => setReason("employment")}
+                className={`rounded-xl px-4 py-3 text-sm font-semibold transition-all ${reason === "employment" ? "bg-[#0071e3] text-white shadow-sm" : "text-[#6e6e73] hover:bg-white/45"}`}
+              >
+                Oportunidad profesional
+              </button>
+            </div>
+
+            <input name="name" type="text" placeholder="Nombre" autoComplete="name" required className={inputClass} />
+            <input name="company" type="text" placeholder="Empresa" autoComplete="organization" required className={inputClass} />
+            <input name="email" type="email" placeholder={reason === "freelance" ? "Email profesional" : "Email"} autoComplete="email" required className={inputClass} />
+
+            {reason === "freelance" ? (
+              <>
+                <textarea name="need" placeholder="Qué necesitas" rows={4} required className={inputClass} />
+                <input name="timeline" type="text" placeholder="Plazo aproximado" required className={inputClass} />
+                <select name="budget" className={inputClass} defaultValue="">
+                  <option value="" disabled>Presupuesto orientativo opcional</option>
+                  <option>Prefiero definirlo contigo</option>
+                  <option>Menos de 1.000 €</option>
+                  <option>1.000 € — 3.000 €</option>
+                  <option>Más de 3.000 €</option>
+                </select>
+              </>
+            ) : (
+              <>
+                <input name="role" type="text" placeholder="Puesto o tipo de colaboración" required className={inputClass} />
+                <textarea name="message" placeholder="Mensaje" rows={4} required className={inputClass} />
+                <input name="offerLink" type="url" placeholder="Enlace de la oferta opcional" className={inputClass} />
+              </>
+            )}
+
+            <label className="flex items-start gap-3 rounded-2xl bg-white/35 p-4 text-xs leading-relaxed text-[#6e6e73]">
+              <input name="privacy" type="checkbox" required className="mt-0.5 h-4 w-4 rounded border-[#c7c7cc] accent-[#0071e3]" />
+              Acepto que Rubén Carrión use estos datos solo para responder a esta consulta. No se enviarán newsletters ni comunicaciones comerciales automáticas.
+            </label>
+
             <button
               type="submit"
-              disabled={sent}
-              className="flex items-center justify-center gap-2 rounded-2xl bg-[#0071e3] px-6 py-3.5 text-sm font-medium text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95 disabled:opacity-70"
+              className="flex items-center justify-center gap-2 rounded-2xl bg-[#0071e3] px-6 py-3.5 text-sm font-medium text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95"
             >
-              {sent ? "Correo abierto" : "Enviar"}
+              Enviar consulta
               <Send className="h-4 w-4" />
             </button>
-            {sent && (
-              <p className="text-xs leading-relaxed text-[#86868b]" role="status">
-                Se ha abierto tu app de correo con el mensaje preparado. Revísalo y pulsa enviar para que llegue a {contactEmail}.
-              </p>
-            )}
           </form>
         </div>
       </div>

@@ -3,11 +3,11 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: "Rubén Carrión | Disenador Grafico e IA Designer",
+    default: "Rubén Carrión — Diseñador gráfico, web e IA en Barcelona",
     template: "%s | Rubén Carrión",
   },
   description:
-    "Portfolio de Rubén Carrión, disenador grafico e IA Designer especializado en branding, campanas visuales, maquetacion, retail, contenido con IA y automatizacion creativa.",
+    "Portfolio de Rubén Carrión: branding, packaging, maquetación, campañas, contenido, diseño web e inteligencia artificial aplicada.",
   metadataBase: new URL("https://rubencarriont.com"),
   alternates: {
     canonical: "/",
@@ -18,19 +18,21 @@ export const metadata: Metadata = {
   publisher: "Rubén Carrión",
   keywords: [
     "Rubén Carrión",
-    "portfolio disenador grafico",
-    "IA Designer",
+    "portfolio diseñador gráfico",
+    "diseñador gráfico Barcelona",
     "branding",
-    "diseno grafico",
-    "maquetacion",
+    "packaging",
+    "maquetación",
+    "diseño web",
+    "IA aplicada al diseño",
     "retail design",
-    "Karcher",
+    "Kärcher",
     "Barcelona",
   ],
   openGraph: {
-    title: "Rubén Carrión | Disenador Grafico e IA Designer",
+    title: "Rubén Carrión — Diseñador gráfico, web e IA en Barcelona",
     description:
-      "Diseno grafico, branding, retail, campanas visuales, contenido con IA y automatizacion creativa.",
+      "Portfolio de Rubén Carrión: branding, packaging, maquetación, campañas, contenido, diseño web e inteligencia artificial aplicada.",
     url: "/",
     siteName: "Rubén Carrión Portfolio",
     locale: "es_ES",
@@ -46,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rubén Carrión | Disenador Grafico e IA Designer",
+    title: "Rubén Carrión — Diseñador gráfico, web e IA en Barcelona",
     description:
-      "Portfolio de diseno grafico, IA generativa, campanas visuales y automatizacion creativa.",
+      "Portfolio de Rubén Carrión: branding, packaging, maquetación, campañas, contenido, diseño web e inteligencia artificial aplicada.",
     images: ["/img/brand/foto_perfil.png"],
   },
   robots: {

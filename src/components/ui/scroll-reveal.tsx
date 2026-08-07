@@ -24,7 +24,7 @@ type ScrollRevealProps = {
 export default function ScrollReveal({
   children,
   scrollContainerRef,
-  enableBlur = true,
+  enableBlur = false,
   baseOpacity = 0.45,
   baseRotation = 0.8,
   blurStrength = 1.2,
@@ -79,7 +79,7 @@ export default function ScrollReveal({
 
       gsap.fromTo(
         wordElements,
-        { opacity: baseOpacity, willChange: "opacity, filter" },
+        { opacity: baseOpacity, willChange: "opacity" },
         {
           ease: "none",
           opacity: 1,
