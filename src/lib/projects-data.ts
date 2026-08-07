@@ -62,14 +62,14 @@ export const projects: Project[] = [
   // ===== 2026 =====
   {
     id: "karcher-instagram-ai-design",
-    title: "Karcher Instagram AI Visuals - Diseno",
+    title: "Karcher Instagram AI Visuals - Diseño",
     year: "2026",
     category: "design",
-    tags: ["Karcher", "Instagram", "Direccion visual", "Campanas"],
-    description: "Piezas visuales para Instagram y campanas de marca de Karcher. Estrategia, direccion creativa y adaptacion a redes.",
+    tags: ["Karcher", "Instagram", "Dirección visual", "Campañas"],
+    description: "Piezas visuales para Instagram y campañas de marca de Karcher. Estrategia, dirección creativa y adaptación a redes.",
     images: karcherInstagramAiImages,
-    longDescription: "Proyecto de direccion visual y diseno para el Instagram de Karcher. Las imagenes se utilizaron como portadas, posts y recursos de campana segun las necesidades de cada momento, dentro de una estrategia pensada para potenciar el perfil de la marca. Mi trabajo incluyo planteamiento de ideas, criterio visual, seleccion de escenas, composicion, adaptacion a formato social y coherencia con el tono de Karcher en redes.",
-    tools: ["Photoshop", "Illustrator", "Estrategia social", "Direccion creativa"],
+    longDescription: "Proyecto de dirección visual y diseño para el Instagram de Karcher. Las imágenes se utilizaron como portadas, posts y recursos de campaña según las necesidades de cada momento, dentro de una estrategia pensada para potenciar el perfil de la marca. Mi trabajo incluyó planteamiento de ideas, criterio visual, selección de escenas, composición, adaptación a formato social y coherencia con el tono de Karcher en redes.",
+    tools: ["Photoshop", "Illustrator", "Estrategia social", "Dirección creativa"],
   },
   {
     id: "karcher-instagram-ai-generative",
@@ -77,9 +77,9 @@ export const projects: Project[] = [
     year: "2026",
     category: "ia",
     tags: ["Karcher", "IA generativa", "Seedream", "Nano Banana Pro"],
-    description: "Imagenes generadas con IA para redes sociales y campanas de Karcher, combinando modelos y procesos segun cada necesidad.",
+    description: "Imágenes generadas con IA para redes sociales y campañas de Karcher, combinando modelos y procesos según cada necesidad.",
     images: karcherInstagramAiImages,
-    longDescription: "Proyecto centrado en la generacion de imagenes con IA para redes sociales y campanas de marca de Karcher. Trabaje combinando distintas herramientas y modelos, como Seedream, Nano Banana Pro y otros sistemas generativos, eligiendo el flujo adecuado en funcion de cada imagen. El proceso incluyo conceptualizacion, prompting, iteracion, direccion de resultados, seleccion de outputs, retoque final y adaptacion de las piezas para usos reales en Instagram y comunicacion de marca.",
+    longDescription: "Proyecto centrado en la generación de imágenes con IA para redes sociales y campañas de marca de Karcher. Trabajé combinando distintas herramientas y modelos, como Seedream, Nano Banana Pro y otros sistemas generativos, eligiendo el flujo adecuado en función de cada imagen. El proceso incluyó conceptualización, prompting, iteración, dirección de resultados, selección de outputs, retoque final y adaptación de las piezas para usos reales en Instagram y comunicación de marca.",
     tools: ["Seedream", "Nano Banana Pro", "Freepik AI", "Magnific", "Photoshop"],
   },
   {
@@ -87,8 +87,8 @@ export const projects: Project[] = [
     title: "Karcher KIRA B 200 Magazine",
     year: "2026",
     category: "editorial",
-    tags: ["Karcher", "Revista", "Editorial", "Maquetacion"],
-    description: "Revista editorial para la exposicion del producto KIRA B 200 de Karcher. Diseno, composicion y maquetacion completa.",
+    tags: ["Karcher", "Revista", "Editorial", "Maquetación"],
+    description: "Revista editorial para la exposición del producto KIRA B 200 de Karcher. Diseño, composición y maquetación completa.",
     images: [
       "/img/projects/2026-karcher-kira-b200-magazine/page-01.jpg",
       "/img/projects/2026-karcher-kira-b200-magazine/page-02.jpg",
@@ -120,7 +120,7 @@ export const projects: Project[] = [
       "/img/projects/2026-karcher-kira-b200-magazine/page-28.jpg",
     ],
     hasBookAnimation: true,
-    longDescription: "Revista creada para una exposicion dedicada al producto KIRA B 200 de Karcher. Me encargue del diseno editorial, la composicion visual y la maquetacion completa de la pieza, cuidando la jerarquia de informacion, el ritmo entre paginas y la preparacion del documento final para presentacion e impresion. En el portfolio se muestra como libro interactivo para poder recorrer la revista pagina a pagina.",
+    longDescription: "Revista creada para una exposición dedicada al producto KIRA B 200 de Karcher. Me encargué del diseño editorial, la composición visual y la maquetación completa de la pieza, cuidando la jerarquía de información, el ritmo entre páginas y la preparación del documento final para presentación e impresión. En el portfolio se muestra como libro interactivo para poder recorrer la revista página a página.",
     tools: ["InDesign", "Photoshop", "Illustrator"],
   },
   {
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     year: "2026",
     category: "editorial",
     tags: ["Karcher", "Revista", "Retail", "Promociones"],
-    description: "Karcher News para Karcher Centers y ferreterias. Diseno editorial, maquetacion y preparacion para impresion.",
+    description: "Karcher News para Karcher Centers y ferreterías. Diseño editorial, maquetación y preparación para impresión.",
     images: [
       "/img/projects/2026-karcher-news-julio/page-1.jpg",
       "/img/projects/2026-karcher-news-julio/page-2.jpg",
@@ -141,7 +141,7 @@ export const projects: Project[] = [
       "/img/projects/2026-karcher-news-julio/page-8.jpg",
     ],
     hasBookAnimation: true,
-    longDescription: "Karcher News es una publicacion interna/comercial que se realiza cada tres o cuatro meses con promociones exclusivas para Karcher Centers, ferreterias y puntos de venta. En esta edicion me encargue de todo el proceso: diseno, composicion, maquetacion editorial, organizacion de promociones y preparacion de archivos previos a impresion. En el portfolio se muestra como libro interactivo, con portada independiente y dobles paginas interiores.",
+    longDescription: "Karcher News es una publicación interna/comercial que se realiza cada tres o cuatro meses con promociones exclusivas para Karcher Centers, ferreterías y puntos de venta. En esta edición me encargué de todo el proceso: diseño, composición, maquetación editorial, organización de promociones y preparación de archivos previos a impresión. En el portfolio se muestra como libro interactivo, con portada independiente y dobles páginas interiores.",
     tools: ["InDesign", "Photoshop", "Illustrator", "Arte final"],
   },
   {
@@ -149,8 +149,8 @@ export const projects: Project[] = [
     title: "Karcher Expocadena Stand 2026",
     year: "2026",
     category: "design",
-    tags: ["Karcher", "Evento", "Stand", "Impresion"],
-    description: "Disenos para el stand de Karcher en Expocadena 2026. Graficas de gran formato, folletos y piezas impresas preparadas para produccion.",
+    tags: ["Karcher", "Evento", "Stand", "Impresión"],
+    description: "Diseños para el stand de Karcher en Expocadena 2026. Gráficas de gran formato, folletos y piezas impresas preparadas para producción.",
     images: [
       "/img/projects/2026-karcher-expocadena-stand/built-for-life-8m.jpg",
       "/img/projects/2026-karcher-expocadena-stand/go-further-6m.jpg",
@@ -162,7 +162,7 @@ export const projects: Project[] = [
       "/img/projects/2026-karcher-expocadena-stand/tarjeta-participacion-1.jpg",
       "/img/projects/2026-karcher-expocadena-stand/tarjeta-participacion-2.jpg",
     ],
-    longDescription: "Proyecto de diseno para el stand de Karcher en Expocadena 2026. Me encargue de preparar las graficas necesarias para el espacio del evento, incluyendo paredes de gran formato, piezas laterales, visuales de campana, folleto HPW y tarjeta de participacion. El trabajo cubre diseno, composicion, adaptacion a medidas reales, escalados de produccion y preparacion de artes finales para impresion.",
+    longDescription: "Proyecto de diseño para el stand de Karcher en Expocadena 2026. Me encargué de preparar las gráficas necesarias para el espacio del evento, incluyendo paredes de gran formato, piezas laterales, visuales de campaña, folleto HPW y tarjeta de participación. El trabajo cubre diseño, composición, adaptación a medidas reales, escalados de producción y preparación de artes finales para impresión.",
     tools: ["Illustrator", "Photoshop", "InDesign", "Arte final"],
   },
   {
@@ -171,7 +171,7 @@ export const projects: Project[] = [
     year: "2026",
     category: "design",
     tags: ["Karcher", "Amazon", "Banners", "E-commerce"],
-    description: "Sistema de banners para la tienda de Amazon de Karcher. Concepto, composicion visual y adaptacion a distintos formatos comerciales.",
+    description: "Sistema de banners para la tienda de Amazon de Karcher. Concepto, composición visual y adaptación a distintos formatos comerciales.",
     images: [
       "/img/projects/2026-karcher-amazon-banners/mesa-de-trabajo-2-100.jpg",
       "/img/projects/2026-karcher-amazon-banners/rcw-header-landing.jpg",
@@ -186,7 +186,7 @@ export const projects: Project[] = [
       "/img/projects/2026-karcher-amazon-banners/goldbox-ilm-mobile-100.jpg",
       "/img/projects/2026-karcher-amazon-banners/karcher-fcv4-amazon-26.mp4",
     ],
-    longDescription: "Conjunto de banners desarrollados durante 2026 para diferentes necesidades de la tienda de Amazon de Karcher. Me encargue de la idea creativa, la composicion, la jerarquia visual y el proceso de produccion de piezas adaptadas a formatos promocionales, landings, cabeceras y espacios de categoria. Algunas imagenes se apoyaron en IA para acelerar la generacion de recursos y ampliar posibilidades visuales, manteniendo siempre el resultado dentro del lenguaje de marca.",
+    longDescription: "Conjunto de banners desarrollados durante 2026 para diferentes necesidades de la tienda de Amazon de Karcher. Me encargué de la idea creativa, la composición, la jerarquía visual y el proceso de producción de piezas adaptadas a formatos promocionales, landings, cabeceras y espacios de categoría. Algunas imágenes se apoyaron en IA para acelerar la generación de recursos y ampliar posibilidades visuales, manteniendo siempre el resultado dentro del lenguaje de marca.",
     tools: ["Photoshop", "Illustrator", "IA generativa"],
   },
   {
@@ -194,8 +194,8 @@ export const projects: Project[] = [
     title: "Karcher Web Campaigns",
     year: "2026",
     category: "design",
-    tags: ["Karcher", "Campanas online", "Web", "Promociones"],
-    description: "Campanas online para la web de Karcher. Gestion mensual, concepto visual y adaptacion de piezas promocionales.",
+    tags: ["Karcher", "Campañas online", "Web", "Promociones"],
+    description: "Campañas online para la web de Karcher. Gestión mensual, concepto visual y adaptación de piezas promocionales.",
     images: [
       "/img/projects/2026-karcher-web-campaigns/rebajas-verano-1900x790-01.jpg",
       "/img/projects/2026-karcher-web-campaigns/rebajas-verano-1900x704-11.jpg",
@@ -214,7 +214,7 @@ export const projects: Project[] = [
       "/img/projects/2026-karcher-web-campaigns/olvida-los-cables.gif",
       "/img/projects/2026-karcher-web-campaigns/banner-home-hg-1900x790-01.jpg",
     ],
-    longDescription: "Seleccion de campanas online desarrolladas durante 2026 para la web de Karcher. Cada mes participo en la gestion de necesidades comerciales, planteamiento visual, diseno de banners, adaptacion a formatos web y preparacion de piezas promocionales para activaciones como rebajas, Yellow Week, cupones, lanzamientos de gama y campanas estacionales. El trabajo combina criterio de marca, jerarquia comercial y produccion agil para mantener una comunicacion constante y coherente en la tienda online.",
+    longDescription: "Selección de campañas online desarrolladas durante 2026 para la web de Karcher. Cada mes participo en la gestión de necesidades comerciales, planteamiento visual, diseño de banners, adaptación a formatos web y preparación de piezas promocionales para activaciones como rebajas, Yellow Week, cupones, lanzamientos de gama y campañas estacionales. El trabajo combina criterio de marca, jerarquía comercial y producción ágil para mantener una comunicación constante y coherente en la tienda online.",
     tools: ["Photoshop", "Illustrator"],
   },
   {
@@ -222,15 +222,15 @@ export const projects: Project[] = [
     title: "Karcher Built for Life Campaign",
     year: "2026",
     category: "design",
-    tags: ["Karcher", "Campana de marca", "Video", "Adaptaciones"],
-    description: "Campana de marca previa a verano para Karcher. Diseno, edicion de video y adaptacion de piezas a formatos digitales y plataformas.",
+    tags: ["Karcher", "Campaña de marca", "Vídeo", "Adaptaciones"],
+    description: "Campaña de marca previa a verano para Karcher. Diseño, edición de vídeo y adaptación de piezas a formatos digitales y plataformas.",
     images: [
       "/img/projects/2026-karcher-brand-campaign/hpw-c-100.jpg",
       "/img/projects/2026-karcher-brand-campaign/wd-c-100.jpg",
       "/img/projects/2026-karcher-brand-campaign/pv-video-hpw.mp4",
       "/img/projects/2026-karcher-brand-campaign/hpw-9x16.mp4",
     ],
-    longDescription: "Campana de marca desarrollada en los meses previos a verano para Karcher, centrada en la linea Built for Life y en gamas clave como HPW y WD. Me encargue de crear los disenos principales, preparar las piezas visuales y adaptar los videos a los formatos necesarios para distintos soportes y plataformas como Amazon Prime, Netflix, Movistar, DAZN, entre otras. El proyecto combina direccion grafica, adaptacion de formatos y edicion de video para mantener coherencia de marca en una campana multicanal.",
+    longDescription: "Campaña de marca desarrollada en los meses previos a verano para Karcher, centrada en la línea Built for Life y en gamas clave como HPW y WD. Me encargué de crear los diseños principales, preparar las piezas visuales y adaptar los vídeos a los formatos necesarios para distintos soportes y plataformas como Amazon Prime, Netflix, Movistar, DAZN, entre otras. El proyecto combina dirección gráfica, adaptación de formatos y edición de vídeo para mantener coherencia de marca en una campaña multicanal.",
     tools: ["Photoshop", "Illustrator", "Premiere Pro"],
   },
   {
@@ -238,8 +238,8 @@ export const projects: Project[] = [
     title: "Karcher Retail & Print Materials",
     year: "2026",
     category: "design",
-    tags: ["Karcher", "Retail", "Impresion", "Trade marketing"],
-    description: "Materiales retail e impresos para Karcher Centers, ferreterias y eventos. Diseno, composicion y preparacion final para imprenta.",
+    tags: ["Karcher", "Retail", "Impresión", "Trade marketing"],
+    description: "Materiales retail e impresos para Karcher Centers, ferreterías y eventos. Diseño, composición y preparación final para imprenta.",
     images: [
       "/img/projects/2026-karcher-retail-print/karcher-center-valencia-vinilo.jpeg",
       "/img/projects/2026-karcher-retail-print/mesa-de-trabajo-2-100.jpg",
@@ -256,7 +256,7 @@ export const projects: Project[] = [
       "/img/projects/2026-karcher-retail-print/trade-bike.jpg",
       "/img/projects/2026-karcher-retail-print/trade-bike-2.jpg",
     ],
-    longDescription: "Conjunto de materiales de retail e impresion desarrollados para Karcher Centers, ferreterias, distribuidores y eventos. El trabajo incluye diseno grafico, composicion de piezas comerciales, adaptacion a soportes fisicos, vinilos, cabeceras de expositor, hojas vendedoras, materiales de trade marketing y preparacion de artes finales para imprenta. Cada pieza se plantea para mantener coherencia de marca, claridad comercial y viabilidad tecnica en produccion.",
+    longDescription: "Conjunto de materiales de retail e impresión desarrollados para Karcher Centers, ferreterías, distribuidores y eventos. El trabajo incluye diseño gráfico, composición de piezas comerciales, adaptación a soportes físicos, vinilos, cabeceras de expositor, hojas vendedoras, materiales de trade marketing y preparación de artes finales para imprenta. Cada pieza se plantea para mantener coherencia de marca, claridad comercial y viabilidad técnica en producción.",
     tools: ["Illustrator", "Photoshop", "InDesign", "Arte final"],
   },
 
