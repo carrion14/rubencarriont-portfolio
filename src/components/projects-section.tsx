@@ -9,12 +9,9 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import ScrollReveal from "@/components/ui/scroll-reveal"
 
 const filters = [
-  { key: "all", label: "Todos" },
-  { key: "branding", label: "Branding" },
-  { key: "web", label: "Web y digital" },
-  { key: "packaging", label: "Packaging" },
-  { key: "editorial", label: "Editorial" },
-  { key: "campaigns", label: "Campañas y contenido" },
+  { key: "design", label: "Diseño" },
+  { key: "marketing", label: "Marketing y redes" },
+  { key: "web-ai", label: "Web e IA" },
 ] as const
 
 type FilterKey = (typeof filters)[number]["key"]
@@ -34,17 +31,46 @@ function projectText(project: Project) {
   return normalize(`${project.title} ${project.description} ${project.longDescription ?? ""} ${project.tags.join(" ")} ${project.category}`)
 }
 
-function projectMatchesFilter(project: Project, filter: FilterKey) {
-  if (filter === "all") return true
+function projectMatchesFilter(project: Project, filter: FilterKey): boolean {
   const haystack = projectText(project)
 
-  if (filter === "branding") return project.category === "branding" || haystack.includes("branding") || haystack.includes("identidad")
-  if (filter === "packaging") return haystack.includes("packaging") || haystack.includes("envase") || haystack.includes("etiqueta")
-  if (filter === "editorial") return project.category === "editorial" || haystack.includes("revista") || haystack.includes("maquet")
-  if (filter === "campaigns") return haystack.includes("campana") || haystack.includes("contenido") || haystack.includes("instagram") || haystack.includes("amazon") || haystack.includes("promocion")
-  if (filter === "web") return project.category === "web"
+  if (filter === "web-ai") {
+    return (
+      project.category === "web" ||
+      project.category === "ia" ||
+      haystack.includes("ia generativa") ||
+      haystack.includes("automatizacion") ||
+      haystack.includes("frontend") ||
+      haystack.includes("next.js") ||
+      haystack.includes("react")
+    )
+  }
+
+  if (filter === "marketing") {
+    return (
+      haystack.includes("marketing") ||
+      haystack.includes("redes") ||
+      haystack.includes("instagram") ||
+      haystack.includes("contenido") ||
+      haystack.includes("campana") ||
+      haystack.includes("amazon") ||
+      haystack.includes("promocion") ||
+      haystack.includes("video") ||
+      haystack.includes("netflix") ||
+      haystack.includes("dazn") ||
+      haystack.includes("movistar")
+    )
+  }
+
+  if (filter === "design") return !projectMatchesFilter(project, "marketing") && !projectMatchesFilter(project, "web-ai")
 
   return false
+}
+
+function getProjectServiceCategory(project: Project) {
+  if (projectMatchesFilter(project, "web-ai")) return "Web e IA"
+  if (projectMatchesFilter(project, "marketing")) return "Marketing y redes"
+  return "Diseño"
 }
 
 function getProjectContext(project: Project) {
@@ -57,12 +83,7 @@ function getProjectContext(project: Project) {
 }
 
 function getMainCategory(project: Project) {
-  if (project.category === "web") return "Web y digital"
-  if (projectMatchesFilter(project, "editorial")) return "Editorial"
-  if (projectMatchesFilter(project, "packaging")) return "Packaging"
-  if (projectMatchesFilter(project, "branding")) return "Branding"
-  if (projectMatchesFilter(project, "campaigns")) return "Campañas y contenido"
-  return "Diseño gráfico"
+  return getProjectServiceCategory(project)
 }
 
 function getSecondaryTags(project: Project) {
@@ -78,13 +99,9 @@ function getSecondaryTags(project: Project) {
 }
 
 function getResponsibility(project: Project) {
-  if (project.category === "web") return "Diseño UI, desarrollo frontend y construcción de una experiencia web funcional."
   const main = getMainCategory(project)
-  if (main === "Editorial") return "Diseño editorial, composición, maquetación y preparación del material final."
-  if (main === "Packaging") return "Diseño aplicado, adaptación de información visual y preparación de archivos finales."
-  if (main === "Branding") return "Desarrollo de identidad visual y aplicaciones de marca."
-  if (main === "Web y digital") return "Diseño y producción de piezas digitales adaptadas a sus formatos de uso."
-  if (main === "Campañas y contenido") return "Concepto visual, composición, adaptación a formatos y producción de recursos."
+  if (main === "Web e IA") return "Diseño web, desarrollo frontend, IA generativa o automatización aplicada al proyecto."
+  if (main === "Marketing y redes") return "Estrategia visual, composición, adaptación a formatos y producción de contenido para campañas o redes."
   return "Diseño gráfico, composición visual y preparación de entregables."
 }
 
@@ -369,7 +386,7 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
   const titleRef = useScrollReveal<HTMLDivElement>()
   const gridRef = useScrollReveal<HTMLDivElement>()
   const [selected, setSelected] = useState<Project | null>(null)
-  const [activeFilter, setActiveFilter] = useState<FilterKey>("all")
+  const [activeFilter, setActiveFilter] = useState<FilterKey>("design")
   const [showAll, setShowAll] = useState(false)
   const filtered = projects.filter((project) => projectMatchesFilter(project, activeFilter))
   const visibleProjects = showAll ? filtered : filtered.slice(0, 8)
@@ -382,7 +399,7 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
             <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Portfolio</p>
             <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Proyectos</h2>
             <ScrollReveal baseOpacity={0.45} baseRotation={0.8} blurStrength={1.2} containerClassName="mt-4 max-w-2xl" textClassName="text-base leading-relaxed text-[#86868b] sm:text-lg" wordAnimationEnd="top 45%">
-              Una galería completa de trabajos de branding, packaging, editorial, campañas, contenido, web e IA aplicada. Puedes filtrar por disciplina y abrir cada proyecto para ver sus piezas.
+              Una galería organizada alrededor de mis tres servicios principales: diseño, marketing y redes, y web e IA. Puedes abrir cada proyecto para ver sus piezas y el contexto del trabajo.
             </ScrollReveal>
           </div>
           <button onClick={() => onNavigate("contact")} className="shrink-0 rounded-full bg-[#0071e3] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95">
