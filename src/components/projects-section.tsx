@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { useRef, useState } from "react"
 import { flushSync } from "react-dom"
-import { Book, ChevronLeft, ChevronRight, X } from "lucide-react"
+import { Book, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react"
 import { projects, type Project } from "@/lib/projects-data"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import ScrollReveal from "@/components/ui/scroll-reveal"
@@ -11,10 +11,10 @@ import ScrollReveal from "@/components/ui/scroll-reveal"
 const filters = [
   { key: "all", label: "Todos" },
   { key: "branding", label: "Branding" },
+  { key: "web", label: "Web y digital" },
   { key: "packaging", label: "Packaging" },
   { key: "editorial", label: "Editorial" },
   { key: "campaigns", label: "Campañas y contenido" },
-  { key: "web", label: "Web y digital" },
 ] as const
 
 type FilterKey = (typeof filters)[number]["key"]
@@ -42,12 +42,13 @@ function projectMatchesFilter(project: Project, filter: FilterKey) {
   if (filter === "packaging") return haystack.includes("packaging") || haystack.includes("envase") || haystack.includes("etiqueta")
   if (filter === "editorial") return project.category === "editorial" || haystack.includes("revista") || haystack.includes("maquet")
   if (filter === "campaigns") return haystack.includes("campana") || haystack.includes("contenido") || haystack.includes("instagram") || haystack.includes("amazon") || haystack.includes("promocion")
-  if (filter === "web") return haystack.includes("web") || haystack.includes("landing") || haystack.includes("frontend") || haystack.includes("digital")
+  if (filter === "web") return project.category === "web"
 
   return false
 }
 
 function getProjectContext(project: Project) {
+  if (project.tags.some((tag) => normalize(tag).includes("berbel"))) return "Berbel Tattoo"
   const knownClients = ["Karcher", "Kärcher", "Bluesun", "CPP", "NTRSV", "Xomega", "Tecnocon", "Nike"]
   const clientTag = project.tags.find((tag) => knownClients.some((client) => normalize(tag).includes(normalize(client))))
   if (clientTag) return clientTag === "Karcher" ? "Kärcher España" : clientTag
@@ -56,10 +57,10 @@ function getProjectContext(project: Project) {
 }
 
 function getMainCategory(project: Project) {
+  if (project.category === "web") return "Web y digital"
   if (projectMatchesFilter(project, "editorial")) return "Editorial"
   if (projectMatchesFilter(project, "packaging")) return "Packaging"
   if (projectMatchesFilter(project, "branding")) return "Branding"
-  if (projectMatchesFilter(project, "web")) return "Web y digital"
   if (projectMatchesFilter(project, "campaigns")) return "Campañas y contenido"
   return "Diseño gráfico"
 }
@@ -77,6 +78,7 @@ function getSecondaryTags(project: Project) {
 }
 
 function getResponsibility(project: Project) {
+  if (project.category === "web") return "Diseño UI, desarrollo frontend y construcción de una experiencia web funcional."
   const main = getMainCategory(project)
   if (main === "Editorial") return "Diseño editorial, composición, maquetación y preparación del material final."
   if (main === "Packaging") return "Diseño aplicado, adaptación de información visual y preparación de archivos finales."
@@ -344,6 +346,17 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   ))}
                 </div>
               </div>
+            )}
+            {project.externalUrl && (
+              <a
+                href={project.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-fit items-center gap-2 rounded-full bg-[#0071e3] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95"
+              >
+                Visitar página
+                <ExternalLink className="h-4 w-4" />
+              </a>
             )}
           </div>
         </div>

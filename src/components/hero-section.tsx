@@ -75,13 +75,13 @@ export default function HeroSection({ onNavigate }: { onNavigate: (section: stri
             Ver proyectos
           </StarBorder>
           <StarBorder
-            onClick={() => onNavigate("collaboration")}
+            onClick={() => onNavigate("contact")}
             className="hero-star-button hero-star-button-secondary"
             color="#0071e3"
             speed="6s"
             thickness={1}
           >
-            Trabajar conmigo
+            Trabaja conmigo
           </StarBorder>
           <button
             onClick={() => onNavigate("work")}

@@ -2,13 +2,14 @@ export interface Project {
   id: string;
   title: string;
   year: string;
-  category: "design" | "ia" | "branding" | "editorial" | "poster" | "karcher";
+  category: "design" | "ia" | "web" | "branding" | "editorial" | "poster" | "karcher";
   tags: string[];
   description: string;
   images: string[];
   hasBookAnimation?: boolean;
   longDescription?: string;
   tools?: string[];
+  externalUrl?: string;
 }
 
 const karcherInstagramAiImages = [
@@ -60,6 +61,23 @@ const karcherInstagramAiImages = [
 
 export const projects: Project[] = [
   // ===== 2026 =====
+  {
+    id: "berbel-tattoo-web",
+    title: "Berbel Tattoo Web",
+    year: "2026",
+    category: "web",
+    tags: ["Berbel Tattoo", "Web", "Diseño UI", "Frontend", "Reserva online"],
+    description: "Catálogo web para Berbel Tattoo, una campaña de tatuajes limitados con diseños disponibles y opción de reserva.",
+    images: [
+      "/img/projects/2026-berbel-tattoo-web/berbel-home.png",
+      "/img/projects/2026-berbel-tattoo-web/berbel-catalogo.png",
+      "/img/projects/2026-berbel-tattoo-web/berbel-funciona.png",
+      "/img/projects/2026-berbel-tattoo-web/berbel-admin.png",
+    ],
+    longDescription: "Diseño y desarrollo web programado desde cero para Berbel Tattoo, un tatuador que lanzó una campaña de piezas limitadas. La web funciona como catálogo digital para consultar los tatuajes disponibles, ver la colección y reservar las piezas antes de que desaparezcan. El proyecto incluye diseño visual, experiencia de usuario, frontend y una estructura pensada para que el cliente pueda presentar la campaña de forma clara, directa y reservable.",
+    tools: ["Next.js", "React", "Tailwind CSS", "Diseño UI", "Frontend"],
+    externalUrl: "https://berbelseries.vercel.app/",
+  },
   {
     id: "karcher-instagram-ai-design",
     title: "Karcher Instagram AI Visuals - Diseño",
