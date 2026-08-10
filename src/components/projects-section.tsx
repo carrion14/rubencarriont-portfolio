@@ -9,6 +9,7 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import ScrollReveal from "@/components/ui/scroll-reveal"
 
 const filters = [
+  { key: "all", label: "Todos" },
   { key: "design", label: "Diseño" },
   { key: "marketing", label: "Marketing y redes" },
   { key: "web-ai", label: "Web e IA" },
@@ -32,6 +33,7 @@ function projectText(project: Project) {
 }
 
 function projectMatchesFilter(project: Project, filter: FilterKey): boolean {
+  if (filter === "all") return true
   const haystack = projectText(project)
 
   if (filter === "web-ai") {
@@ -71,6 +73,18 @@ function getProjectServiceCategory(project: Project) {
   if (projectMatchesFilter(project, "web-ai")) return "Web e IA"
   if (projectMatchesFilter(project, "marketing")) return "Marketing y redes"
   return "Diseño"
+}
+
+function getProjectYear(project: Project) {
+  const year = Number.parseInt(project.year, 10)
+  return Number.isNaN(year) ? 0 : year
+}
+
+function sortProjectsByNewest(items: Project[]) {
+  return items
+    .map((project, index) => ({ project, index }))
+    .sort((a, b) => getProjectYear(b.project) - getProjectYear(a.project) || a.index - b.index)
+    .map(({ project }) => project)
 }
 
 function getProjectContext(project: Project) {
@@ -386,9 +400,9 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
   const titleRef = useScrollReveal<HTMLDivElement>()
   const gridRef = useScrollReveal<HTMLDivElement>()
   const [selected, setSelected] = useState<Project | null>(null)
-  const [activeFilter, setActiveFilter] = useState<FilterKey>("design")
+  const [activeFilter, setActiveFilter] = useState<FilterKey>("all")
   const [showAll, setShowAll] = useState(false)
-  const filtered = projects.filter((project) => projectMatchesFilter(project, activeFilter))
+  const filtered = sortProjectsByNewest(projects.filter((project) => projectMatchesFilter(project, activeFilter)))
   const visibleProjects = showAll ? filtered : filtered.slice(0, 8)
 
   return (
