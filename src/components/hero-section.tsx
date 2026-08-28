@@ -44,10 +44,10 @@ export default function HeroSection({ onNavigate }: { onNavigate: (section: stri
           </h1>
           <div className="mb-8 grid max-w-3xl gap-4 text-base leading-relaxed text-[#6e6e73] sm:text-xl">
             <p>
-              Ayudo a pequeños negocios que funcionan bien, pero cuya presencia digital no refleja su calidad. Combino diseño, contenido para redes, web y marketing para mejorar su imagen, ganar visibilidad y generar más oportunidades sin que necesiten un equipo de marketing completo.
+              Ayudo a <strong className="key-phrase">pequeños negocios que funcionan bien</strong>, pero cuya presencia digital no refleja su calidad. Combino diseño, contenido para redes, web y marketing para <strong className="key-phrase">mejorar su imagen, ganar visibilidad y generar más oportunidades</strong> sin que necesiten un equipo de marketing completo.
             </p>
             <p className="text-sm text-[#86868b] sm:text-base">
-              Analizo qué necesita realmente cada negocio y preparo una solución con prioridades, alcance y objetivos claros.
+              Analizo qué necesita realmente cada negocio y preparo una solución con <strong className="font-semibold text-[#515154]">prioridades, alcance y objetivos claros</strong>.
             </p>
           </div>
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">

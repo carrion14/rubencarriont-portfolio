@@ -900,6 +900,27 @@ body {
   letter-spacing: -0.025em;
 }
 
+/* Editorial accents make long-form copy easier to scan without losing the clean visual system. */
+.key-phrase {
+  color: #1d1d1f;
+  font-weight: 650;
+  text-decoration-line: underline;
+  text-decoration-color: rgba(0, 113, 227, 0.28);
+  text-decoration-thickness: 0.18em;
+  text-underline-offset: 0.12em;
+  text-decoration-skip-ink: none;
+}
+
+.editorial-accent {
+  display: inline-block;
+  color: #0071e3;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
 /* ===== MOBILE: preserve natural section flow ===== */
 @media (max-width: 767px) {
   section[id] {

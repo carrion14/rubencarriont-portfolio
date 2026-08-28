@@ -31,7 +31,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
           <div>
             <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Sobre mí</p>
             <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-              Un colaborador versátil <span className="text-gradient">con visión global.</span>
+              Un colaborador versátil <span className="editorial-accent">con visión global.</span>
             </h2>
           </div>
 
