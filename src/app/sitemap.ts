@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: "https://rubencarriont.com",
-      lastModified: new Date("2026-07-17"),
+      lastModified: new Date("2026-08-28"),
       changeFrequency: "monthly",
       priority: 1,
     },

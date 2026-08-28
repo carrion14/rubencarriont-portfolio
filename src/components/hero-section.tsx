@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Globe, Mail } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import SideRays from "@/components/ui/side-rays"
@@ -33,81 +33,52 @@ export default function HeroSection({ onNavigate }: { onNavigate: (section: stri
 
       <div
         ref={contentRef}
-        className="reveal visible relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 py-24 text-center sm:px-8"
+        className="reveal visible relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 px-6 py-24 text-left lg:grid-cols-[1fr_auto] lg:px-8"
       >
-        <div className="mb-6 overflow-hidden rounded-full border border-white/70 bg-white/45 p-1 shadow-[0_18px_50px_rgba(0,113,227,0.12)] backdrop-blur-2xl">
-          <Image
-            src="/img/brand/foto_perfil.png"
-            alt="Retrato de Rubén Carrión"
-            width={96}
-            height={96}
-            priority
-            sizes="96px"
-            className="h-20 w-20 rounded-full object-cover sm:h-24 sm:w-24"
-          />
-        </div>
-
-        <p className="liquid-pill mb-5 inline-flex px-4 py-2 text-xs font-medium text-[#0071e3]">
-          Diseñador gráfico · Creativo digital · IA aplicada
-        </p>
-
-        <h1 className="mb-6 text-5xl font-semibold tracking-tighter text-[#1d1d1f] sm:text-7xl md:text-8xl">
-          Rubén <span className="hero-name">Carrión</span>
-        </h1>
-
-        <div className="mb-9 grid max-w-3xl gap-4 text-base leading-relaxed text-[#6e6e73] sm:text-xl">
-          <p>
-            Diseñador gráfico especializado en branding, packaging, maquetación editorial, campañas y producción visual. También desarrollo páginas web y aplico inteligencia artificial, generación de recursos y automatización para agilizar procesos creativos y construir soluciones digitales más completas.
+        <div className="max-w-4xl">
+          <p className="liquid-pill mb-6 inline-flex px-4 py-2 text-xs font-medium text-[#0071e3]">
+            Diseño · Contenido · Web y marketing digital
           </p>
-          <p className="text-sm text-[#86868b] sm:text-base">
-            He trabajado en proyectos reales de marca, producto, comunicación y contenido para empresas como Kärcher España, Bluesun y CPP Chemical Group. Estoy disponible para proyectos freelance y para oportunidades dentro de equipos creativos, de marketing o comunicación.
-          </p>
-        </div>
-
-        <div className="mb-9 flex w-full max-w-2xl flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+          <h1 className="mb-6 text-5xl font-semibold tracking-tighter text-[#1d1d1f] sm:text-7xl md:text-8xl">
+            Tu negocio ya tiene valor.{" "}<span className="hero-name">Hagamos que se vea.</span>
+          </h1>
+          <div className="mb-8 grid max-w-3xl gap-4 text-base leading-relaxed text-[#6e6e73] sm:text-xl">
+            <p>
+              Ayudo a pequeños negocios que funcionan bien, pero cuya presencia digital no refleja su calidad. Combino diseño, contenido para redes, web y marketing para mejorar su imagen, ganar visibilidad y generar más oportunidades sin que necesiten un equipo de marketing completo.
+            </p>
+            <p className="text-sm text-[#86868b] sm:text-base">
+              Analizo qué necesita realmente cada negocio y preparo una solución con prioridades, alcance y objetivos claros.
+            </p>
+          </div>
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
           <StarBorder
-            onClick={() => onNavigate("projects")}
+            onClick={() => onNavigate("contact")}
             className="hero-star-button hero-star-button-primary"
             color="#7cc8ff"
             speed="5s"
             thickness={1}
           >
-            Ver proyectos
+            Cuéntame qué necesitas
           </StarBorder>
           <StarBorder
-            onClick={() => onNavigate("contact")}
+            onClick={() => onNavigate("services")}
             className="hero-star-button hero-star-button-secondary"
             color="#0071e3"
             speed="6s"
             thickness={1}
           >
-            Trabaja conmigo
+            Ver servicios
           </StarBorder>
           <button
-            onClick={() => onNavigate("work")}
-            className="liquid-pill px-5 py-3 text-sm font-semibold text-[#0071e3] transition-all hover:text-blue-600 active:scale-95"
+            onClick={() => onNavigate("projects")}
+            className="inline-flex items-center gap-2 px-3 py-3 text-sm font-semibold text-[#0071e3] transition-all hover:text-blue-600 active:scale-95"
           >
-            Ver experiencia
+            Ver proyectos <ArrowRight className="h-4 w-4" />
           </button>
+          </div>
         </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <a
-            href="https://www.linkedin.com/in/rubencarriontorres/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="liquid-pill flex items-center gap-2 px-4 py-2 text-xs font-medium text-[#6e6e73] transition-all hover:text-[#0071e3]"
-          >
-            <Globe className="h-3.5 w-3.5" />
-            LinkedIn
-          </a>
-          <a
-            href="mailto:rubencarrion6@gmail.com"
-            className="liquid-pill flex items-center gap-2 px-4 py-2 text-xs font-medium text-[#6e6e73] transition-all hover:text-[#0071e3]"
-          >
-            <Mail className="h-3.5 w-3.5" />
-            Email
-          </a>
+        <div className="mx-auto overflow-hidden rounded-full border border-white/70 bg-white/45 p-1 shadow-[0_18px_50px_rgba(0,113,227,0.12)] backdrop-blur-2xl lg:mx-0">
+          <Image src="/img/brand/foto_perfil.png" alt="Retrato de Rubén Carrión" width={144} height={144} priority sizes="144px" className="h-28 w-28 rounded-full object-cover sm:h-36 sm:w-36" />
         </div>
       </div>
     </section>

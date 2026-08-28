@@ -18,7 +18,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
             avatarUrl="/img/brand/foto_cara.png"
             miniAvatarUrl="/img/brand/foto_perfil.png"
             name="Rubén Carrión"
-            title="Diseñador gráfico, web e IA"
+            title="Diseño, contenido y presencia digital"
             handle="rubencarriont"
             status="Disponible"
             contactText="Contactar"
@@ -31,7 +31,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
           <div>
             <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Sobre mí</p>
             <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-              Diseñador polivalente, <span className="text-gradient">pero no genérico.</span>
+              Un colaborador versátil <span className="text-gradient">con visión global.</span>
             </h2>
           </div>
 
@@ -43,7 +43,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
               textClassName="text-base leading-relaxed sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              Llevo tres años trabajando en contextos reales de marca y producción visual: branding, packaging, maquetación, campañas, contenido y materiales para equipos comerciales o de marketing.
+              Soy Rubén Carrión, diseñador gráfico, community manager y especialista en inteligencia artificial. Ayudo a pequeños negocios a mejorar su presencia visual y digital conectando diseño, contenido, web y marketing.
             </ScrollReveal>
             <ScrollReveal
               baseOpacity={0.45}
@@ -52,7 +52,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
               textClassName="text-base leading-relaxed sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              En Kärcher España he creado y adaptado piezas para campañas, retail, Amazon, web, editorial e Instagram, coordinando diseño y publicación durante varios meses. También aplico IA generativa, desarrollo web y automatizaciones sencillas cuando ayudan a producir mejor y más rápido.
+              He trabajado en proyectos reales de branding, packaging, campañas, contenido, web y producción visual para empresas como Kärcher España, Bluesun y CPP Chemical Group. Esa experiencia me permite combinar creatividad, ejecución y criterio comercial.
             </ScrollReveal>
             <ScrollReveal
               baseOpacity={0.45}
@@ -61,7 +61,7 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
               textClassName="text-base leading-relaxed sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              En los equipos donde he trabajado valoran mi rapidez, mi agilidad para sacar trabajo adelante y mi facilidad para orientarme a las necesidades del equipo. Vivo en Barcelona y puedo colaborar en remoto, híbrido o presencial.
+              No intento incluir todos mis servicios en cada proyecto. Primero detecto qué necesita el negocio y después preparo una solución concreta, con prioridades y límites claros.
             </ScrollReveal>
           </div>
 

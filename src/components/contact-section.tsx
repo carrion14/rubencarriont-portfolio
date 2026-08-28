@@ -1,13 +1,10 @@
 "use client"
 
-import { useState } from "react"
-import { Globe, Mail, Send } from "lucide-react"
+import { FileText, Globe, Mail, Send } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import ScrollReveal from "@/components/ui/scroll-reveal"
 
 const contactEmail = "rubencarrion6@gmail.com"
-
-type ContactReason = "freelance" | "employment"
 
 const inputClass =
   "rounded-2xl bg-[rgba(255,255,255,0.55)] px-4 py-3.5 text-sm text-[#1d1d1f] placeholder:text-[#86868b] transition-all focus:bg-[rgba(255,255,255,0.76)] focus:outline-none focus:ring-2 focus:ring-[#0071e3]/30"
@@ -17,19 +14,13 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
 
   const titleRef = useScrollReveal<HTMLDivElement>()
   const contentRef = useScrollReveal<HTMLDivElement>()
-  const [reason, setReason] = useState<ContactReason>("freelance")
-  const subject =
-    reason === "freelance"
-      ? "Consulta de proyecto desde rubencarriont.com"
-      : "Oportunidad profesional desde rubencarriont.com"
-
   return (
     <section className="relative flex w-full flex-col items-center justify-center px-8 py-24 sm:py-28">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:gap-14">
         <div ref={titleRef} className="reveal">
           <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Contacto</p>
           <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-            Hablemos sobre lo que necesitas
+            Hablemos de la prioridad de tu negocio.
           </h2>
         </div>
 
@@ -42,7 +33,7 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
               textClassName="text-base leading-relaxed text-[#6e6e73] sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              Elige el motivo y cuéntame lo esencial. Te responderé con las preguntas necesarias o con el siguiente paso para avanzar.
+              Cuéntame qué parte de tu presencia digital quieres mejorar. Te responderé con las preguntas necesarias y un siguiente paso claro.
             </ScrollReveal>
 
             <div className="space-y-3">
@@ -62,59 +53,38 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
                 <Globe className="h-5 w-5 shrink-0 text-[#0071e3]" />
                 LinkedIn /rubencarriontorres
               </a>
+              <span aria-disabled="true" title="Catálogo pendiente de incorporar" className="flex cursor-not-allowed items-center gap-3 rounded-2xl bg-[rgba(255,255,255,0.35)] p-4 text-sm font-medium text-[#86868b] opacity-70">
+                <FileText className="h-5 w-5 shrink-0 text-[#0071e3]" />
+                Ver catálogo de servicios
+              </span>
             </div>
           </div>
 
           <form action={`https://formsubmit.co/${contactEmail}`} method="POST" className="flex flex-col gap-4">
-            <input type="hidden" name="_subject" value={subject} />
+            <input type="hidden" name="_subject" value="Consulta de negocio desde rubencarriont.com" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value="https://rubencarriont.com/?contact=sent" />
-            <input
-              type="hidden"
-              name="Motivo"
-              value={reason === "freelance" ? "Proyecto freelance o colaboración" : "Oportunidad profesional"}
-            />
-            <div className="grid gap-2 rounded-2xl bg-white/45 p-1 sm:grid-cols-2">
-              <button
-                type="button"
-                onClick={() => setReason("freelance")}
-                className={`rounded-xl px-4 py-3 text-sm font-semibold transition-all ${reason === "freelance" ? "bg-[#0071e3] text-white shadow-sm" : "text-[#6e6e73] hover:bg-white/45"}`}
-              >
-                Proyecto o colaboración
-              </button>
-              <button
-                type="button"
-                onClick={() => setReason("employment")}
-                className={`rounded-xl px-4 py-3 text-sm font-semibold transition-all ${reason === "employment" ? "bg-[#0071e3] text-white shadow-sm" : "text-[#6e6e73] hover:bg-white/45"}`}
-              >
-                Oportunidad profesional
-              </button>
-            </div>
-
-            <input name="name" type="text" placeholder="Nombre" autoComplete="name" required className={inputClass} />
-            <input name="company" type="text" placeholder="Empresa" autoComplete="organization" required className={inputClass} />
-            <input name="email" type="email" placeholder={reason === "freelance" ? "Email profesional" : "Email"} autoComplete="email" required className={inputClass} />
-
-            {reason === "freelance" ? (
-              <>
-                <textarea name="need" placeholder="Qué necesitas" rows={4} required className={inputClass} />
-                <input name="timeline" type="text" placeholder="Plazo aproximado" required className={inputClass} />
-                <select name="budget" className={inputClass} defaultValue="">
-                  <option value="" disabled>Presupuesto orientativo opcional</option>
-                  <option>Prefiero definirlo contigo</option>
-                  <option>Menos de 1.000 €</option>
-                  <option>1.000 € — 3.000 €</option>
-                  <option>Más de 3.000 €</option>
-                </select>
-              </>
-            ) : (
-              <>
-                <input name="role" type="text" placeholder="Puesto o tipo de colaboración" required className={inputClass} />
-                <textarea name="message" placeholder="Mensaje" rows={4} required className={inputClass} />
-                <input name="offerLink" type="url" placeholder="Enlace de la oferta opcional" className={inputClass} />
-              </>
-            )}
+            <label className="sr-only" htmlFor="name">Nombre</label>
+            <input id="name" name="name" type="text" placeholder="Nombre" autoComplete="name" required className={inputClass} />
+            <label className="sr-only" htmlFor="company">Negocio o empresa</label>
+            <input id="company" name="company" type="text" placeholder="Negocio o empresa" autoComplete="organization" required className={inputClass} />
+            <label className="sr-only" htmlFor="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email" autoComplete="email" required className={inputClass} />
+            <label className="text-xs font-semibold text-[#6e6e73]" htmlFor="improvement">¿Qué quieres mejorar?</label>
+            <select id="improvement" name="improvement" required className={inputClass} defaultValue="">
+              <option value="" disabled>Selecciona una opción</option>
+              <option>Redes sociales</option><option>Web</option><option>Google Business</option><option>Imagen visual</option><option>No lo tengo claro</option>
+            </select>
+            <label className="sr-only" htmlFor="explanation">Breve explicación</label>
+            <textarea id="explanation" name="explanation" placeholder="Breve explicación" rows={4} required className={inputClass} />
+            <label className="sr-only" htmlFor="timeline">Plazo aproximado</label>
+            <input id="timeline" name="timeline" type="text" placeholder="Plazo aproximado" required className={inputClass} />
+            <label className="sr-only" htmlFor="budget">Presupuesto orientativo</label>
+            <select id="budget" name="budget" className={inputClass} defaultValue="">
+              <option value="" disabled>Presupuesto orientativo</option>
+              <option>Prefiero definirlo contigo</option><option>Menos de 500 €</option><option>Entre 500 y 1.000 €</option><option>Entre 1.000 y 3.000 €</option><option>Más de 3.000 €</option>
+            </select>
 
             <label className="flex items-start gap-3 rounded-2xl bg-white/35 p-4 text-xs leading-relaxed text-[#6e6e73]">
               <input name="privacy" type="checkbox" required className="mt-0.5 h-4 w-4 rounded border-[#c7c7cc] accent-[#0071e3]" />
@@ -125,7 +95,7 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
               type="submit"
               className="flex items-center justify-center gap-2 rounded-2xl bg-[#0071e3] px-6 py-3.5 text-sm font-medium text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95"
             >
-              Enviar consulta
+              Cuéntame qué necesitas
               <Send className="h-4 w-4" />
             </button>
           </form>

@@ -3,11 +3,11 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: "Rubén Carrión — Diseñador gráfico, web e IA en Barcelona",
+    default: "Rubén Carrión | Diseño, redes y presencia digital en Barcelona",
     template: "%s | Rubén Carrión",
   },
   description:
-    "Portfolio de Rubén Carrión: branding, packaging, maquetación, campañas, contenido, diseño web e inteligencia artificial aplicada.",
+    "Ayudo a pequeños negocios de Barcelona y Badalona a mejorar su diseño, contenido para redes, web, SEO y Perfil de Empresa de Google.",
   metadataBase: new URL("https://rubencarriont.com"),
   alternates: {
     canonical: "/",
@@ -24,15 +24,18 @@ export const metadata: Metadata = {
     "packaging",
     "maquetación",
     "diseño web",
-    "IA aplicada al diseño",
+    "community manager Barcelona",
+    "contenido para redes sociales",
+    "SEO local",
+    "Google Business",
     "retail design",
     "Kärcher",
     "Barcelona",
   ],
   openGraph: {
-    title: "Rubén Carrión — Diseñador gráfico, web e IA en Barcelona",
+    title: "Rubén Carrión | Diseño, redes y presencia digital en Barcelona",
     description:
-      "Portfolio de Rubén Carrión: branding, packaging, maquetación, campañas, contenido, diseño web e inteligencia artificial aplicada.",
+      "Ayudo a pequeños negocios de Barcelona y Badalona a mejorar su diseño, contenido para redes, web, SEO y Perfil de Empresa de Google.",
     url: "/",
     siteName: "Rubén Carrión Portfolio",
     locale: "es_ES",
@@ -48,9 +51,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rubén Carrión — Diseñador gráfico, web e IA en Barcelona",
+    title: "Rubén Carrión | Diseño, redes y presencia digital en Barcelona",
     description:
-      "Portfolio de Rubén Carrión: branding, packaging, maquetación, campañas, contenido, diseño web e inteligencia artificial aplicada.",
+      "Ayudo a pequeños negocios de Barcelona y Badalona a mejorar su diseño, contenido para redes, web, SEO y Perfil de Empresa de Google.",
     images: ["/img/brand/foto_perfil.png"],
   },
   robots: {

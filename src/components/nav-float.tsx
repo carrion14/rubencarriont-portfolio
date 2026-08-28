@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Briefcase, FolderOpen, Home, MessageSquare, PanelsTopLeft, User } from "lucide-react"
+import { FolderOpen, Home, MessageSquare, PanelsTopLeft, Route, User } from "lucide-react"
 
 import Dock from "@/components/ui/dock"
 
@@ -9,8 +9,8 @@ const sections = [
   { id: "hero", label: "Inicio", icon: Home },
   { id: "services", label: "Servicios", icon: PanelsTopLeft },
   { id: "projects", label: "Proyectos", icon: FolderOpen },
+  { id: "process", label: "Proceso", icon: Route },
   { id: "about", label: "Sobre mí", icon: User },
-  { id: "work", label: "Experiencia", icon: Briefcase },
   { id: "contact", label: "Contacto", icon: MessageSquare },
 ]
 

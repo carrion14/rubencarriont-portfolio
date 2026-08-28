@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { flushSync } from "react-dom"
 import { Book, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react"
 import { projects, type Project } from "@/lib/projects-data"
@@ -11,8 +11,9 @@ import ScrollReveal from "@/components/ui/scroll-reveal"
 const filters = [
   { key: "all", label: "Todos" },
   { key: "design", label: "Diseño" },
-  { key: "marketing", label: "Marketing y redes" },
-  { key: "web-ai", label: "Web e IA" },
+  { key: "content", label: "Contenido y redes" },
+  { key: "web", label: "Web" },
+  { key: "ai", label: "IA aplicada" },
 ] as const
 
 type FilterKey = (typeof filters)[number]["key"]
@@ -34,45 +35,20 @@ function projectText(project: Project) {
 
 function projectMatchesFilter(project: Project, filter: FilterKey): boolean {
   if (filter === "all") return true
+  return getProjectServiceKey(project) === filter
+}
+
+function getProjectServiceKey(project: Project): Exclude<FilterKey, "all"> {
   const haystack = projectText(project)
-
-  if (filter === "web-ai") {
-    return (
-      project.category === "web" ||
-      project.category === "ia" ||
-      haystack.includes("ia generativa") ||
-      haystack.includes("automatizacion") ||
-      haystack.includes("frontend") ||
-      haystack.includes("next.js") ||
-      haystack.includes("react")
-    )
-  }
-
-  if (filter === "marketing") {
-    return (
-      haystack.includes("marketing") ||
-      haystack.includes("redes") ||
-      haystack.includes("instagram") ||
-      haystack.includes("contenido") ||
-      haystack.includes("campana") ||
-      haystack.includes("amazon") ||
-      haystack.includes("promocion") ||
-      haystack.includes("video") ||
-      haystack.includes("netflix") ||
-      haystack.includes("dazn") ||
-      haystack.includes("movistar")
-    )
-  }
-
-  if (filter === "design") return !projectMatchesFilter(project, "marketing") && !projectMatchesFilter(project, "web-ai")
-
-  return false
+  if (project.category === "ia" || haystack.includes("ia generativa") || haystack.includes("seedream") || haystack.includes("nano banana")) return "ai"
+  if (project.category === "web" || haystack.includes("frontend") || haystack.includes("next.js") || haystack.includes("react")) return "web"
+  if (haystack.includes("instagram") || haystack.includes("redes") || haystack.includes("contenido") || haystack.includes("campana") || haystack.includes("amazon") || haystack.includes("promocion") || haystack.includes("marketing")) return "content"
+  return "design"
 }
 
 function getProjectServiceCategory(project: Project) {
-  if (projectMatchesFilter(project, "web-ai")) return "Web e IA"
-  if (projectMatchesFilter(project, "marketing")) return "Marketing y redes"
-  return "Diseño"
+  const labels = { design: "Diseño", content: "Contenido y redes", web: "Web", ai: "IA aplicada" }
+  return labels[getProjectServiceKey(project)]
 }
 
 function getProjectYear(project: Project) {
@@ -80,10 +56,11 @@ function getProjectYear(project: Project) {
   return Number.isNaN(year) ? 0 : year
 }
 
-function sortProjectsByNewest(items: Project[]) {
+function sortProjectsByPriority(items: Project[]) {
+  const priority = { content: 0, design: 1, web: 2, ai: 3 }
   return items
     .map((project, index) => ({ project, index }))
-    .sort((a, b) => getProjectYear(b.project) - getProjectYear(a.project) || a.index - b.index)
+    .sort((a, b) => priority[getProjectServiceKey(a.project)] - priority[getProjectServiceKey(b.project)] || getProjectYear(b.project) - getProjectYear(a.project) || a.index - b.index)
     .map(({ project }) => project)
 }
 
@@ -114,8 +91,9 @@ function getSecondaryTags(project: Project) {
 
 function getResponsibility(project: Project) {
   const main = getMainCategory(project)
-  if (main === "Web e IA") return "Diseño web, desarrollo frontend, IA generativa o automatización aplicada al proyecto."
-  if (main === "Marketing y redes") return "Estrategia visual, composición, adaptación a formatos y producción de contenido para campañas o redes."
+  if (main === "Web") return "Diseño web, experiencia de usuario y desarrollo frontend aplicado al proyecto."
+  if (main === "IA aplicada") return "Dirección, generación, selección y acabado de recursos mediante inteligencia artificial aplicada."
+  if (main === "Contenido y redes") return "Estrategia visual, composición, adaptación a formatos y producción de contenido para campañas o redes."
   return "Diseño gráfico, composición visual y preparación de entregables."
 }
 
@@ -304,10 +282,21 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   const [imgIndex, setImgIndex] = useState(0)
   const mainCategory = getMainCategory(project)
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose()
+    }
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [onClose])
+
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center p-2 sm:items-center sm:p-8" onClick={(e) => { if (e.target === e.currentTarget) onClose() }}>
       <div className="absolute inset-0 bg-[rgba(0,0,0,0.35)] backdrop-blur-2xl" />
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
         className="relative z-10 mx-auto flex max-h-[calc(100dvh-1rem)] w-[calc(100vw-1rem)] max-w-5xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl sm:max-h-[85vh] sm:w-full"
         onClick={(e) => e.stopPropagation()}
       >
@@ -342,7 +331,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="flex min-w-0 flex-col gap-5 p-5 sm:p-7 md:w-2/5 md:overflow-y-auto">
             <div>
               <p className="text-xs font-medium text-[#0071e3]">{getProjectContext(project)} · {project.year}</p>
-              <h2 className="text-xl font-semibold text-[#1d1d1f]">{project.title}</h2>
+              <h2 id="project-modal-title" className="text-xl font-semibold text-[#1d1d1f]">{project.title}</h2>
             </div>
 
             <div className="rounded-2xl bg-[rgba(0,0,0,0.03)] p-4">
@@ -402,7 +391,7 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
   const [selected, setSelected] = useState<Project | null>(null)
   const [activeFilter, setActiveFilter] = useState<FilterKey>("all")
   const [showAll, setShowAll] = useState(false)
-  const filtered = sortProjectsByNewest(projects.filter((project) => projectMatchesFilter(project, activeFilter)))
+  const filtered = sortProjectsByPriority(projects.filter((project) => projectMatchesFilter(project, activeFilter)))
   const visibleProjects = showAll ? filtered : filtered.slice(0, 8)
 
   return (
@@ -413,7 +402,7 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
             <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Portfolio</p>
             <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Proyectos</h2>
             <ScrollReveal baseOpacity={0.45} baseRotation={0.8} blurStrength={1.2} containerClassName="mt-4 max-w-2xl" textClassName="text-base leading-relaxed text-[#86868b] sm:text-lg" wordAnimationEnd="top 45%">
-              Una galería organizada alrededor de mis tres servicios principales: diseño, marketing y redes, y web e IA. Puedes abrir cada proyecto para ver sus piezas y el contexto del trabajo.
+              Proyectos reales organizados por contenido y redes, diseño, web e IA aplicada. Puedes abrir cada caso para ver sus piezas y el contexto del trabajo.
             </ScrollReveal>
           </div>
           <button onClick={() => onNavigate("contact")} className="shrink-0 rounded-full bg-[#0071e3] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95">
