@@ -4,13 +4,10 @@ import { CheckCircle2 } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 const processSteps = [
-  ["Diagnóstico", "Conozco el negocio, su situación y el problema real."],
-  ["Prioridades", "Decidimos qué necesita resolverse primero y qué puede esperar."],
-  ["Propuesta y acuerdo", "Concretamos resultado, alcance, calendario, precio y responsabilidades."],
-  ["Preparación y planificación", "Reunimos materiales, accesos e información y organizamos la producción."],
-  ["Producción", "Ejecuto el trabajo acordado."],
-  ["Revisión final", "Recogemos el feedback incluido y comprobamos los entregables."],
-  ["Entrega", "Entrego, publico o pongo en marcha el trabajo y acordamos el siguiente paso."],
+  ["Diagnóstico y prioridades", "Conozco el negocio, su situación y el problema real. Decidimos qué necesita resolverse primero y qué puede esperar."],
+  ["Propuesta y preparación", "Concretamos resultado, alcance, calendario, precio y responsabilidades. Después reunimos materiales, accesos e información y organizamos la producción."],
+  ["Producción", "Ejecuto el trabajo acordado siguiendo las prioridades y el calendario definidos."],
+  ["Revisión y entrega", "Recogemos el feedback incluido, comprobamos los entregables y publico, entrego o pongo en marcha el trabajo. Finalmente acordamos el siguiente paso."],
 ]
 
 const limits = [
@@ -24,19 +21,19 @@ const limits = [
 export default function CollaborationSection() {
   const processRef = useScrollReveal<HTMLDivElement>()
   return (
-    <section className="relative px-8 py-24 sm:py-28">
+    <section className="relative px-6 py-20 sm:px-8 sm:py-24">
       <div ref={processRef} className="reveal mx-auto flex max-w-6xl flex-col gap-10">
         <div className="max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Proceso</p>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Un recorrido claro de principio a fin.</h2>
           <p className="mt-4 text-base leading-relaxed text-[#6e6e73] sm:text-lg">Primero entendemos el problema. Después ordenamos prioridades, alcance y responsabilidades antes de producir.</p>
         </div>
-        <ol className="grid gap-3 md:grid-cols-2 lg:grid-cols-7">
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map(([title, text], index) => (
-            <li key={title} className="relative rounded-3xl border border-white/60 bg-white/45 p-5 lg:min-h-64">
+            <li key={title} className="relative rounded-3xl border border-white/60 bg-white/45 p-6 lg:min-h-64">
               <span className="text-xs font-semibold text-[#0071e3]">{String(index + 1).padStart(2, "0")}</span>
-              <h3 className="mt-4 text-base font-semibold text-[#1d1d1f]">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#6e6e73]">{text}</p>
+              <h3 className="mt-4 text-lg font-semibold text-[#1d1d1f]">{title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#6e6e73]">{text}</p>
             </li>
           ))}
         </ol>

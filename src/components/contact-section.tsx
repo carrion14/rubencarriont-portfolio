@@ -80,12 +80,6 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
             <textarea id="explanation" name="explanation" placeholder="Breve explicación" rows={4} required className={inputClass} />
             <label className="sr-only" htmlFor="timeline">Plazo aproximado</label>
             <input id="timeline" name="timeline" type="text" placeholder="Plazo aproximado" required className={inputClass} />
-            <label className="sr-only" htmlFor="budget">Presupuesto orientativo</label>
-            <select id="budget" name="budget" className={inputClass} defaultValue="">
-              <option value="" disabled>Presupuesto orientativo</option>
-              <option>Prefiero definirlo contigo</option><option>Menos de 500 €</option><option>Entre 500 y 1.000 €</option><option>Entre 1.000 y 3.000 €</option><option>Más de 3.000 €</option>
-            </select>
-
             <label className="flex items-start gap-3 rounded-2xl bg-white/35 p-4 text-xs leading-relaxed text-[#6e6e73]">
               <input name="privacy" type="checkbox" required className="mt-0.5 h-4 w-4 rounded border-[#c7c7cc] accent-[#0071e3]" />
               Acepto que Rubén Carrión use estos datos solo para responder a esta consulta. No se enviarán newsletters ni comunicaciones comerciales automáticas.

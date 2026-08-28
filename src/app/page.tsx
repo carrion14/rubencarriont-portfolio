@@ -56,7 +56,7 @@ export default function Home() {
         <ProblemsSection />
         <section id="services">
           <ServicesSection />
-          <OffersSection />
+          <OffersSection onNavigate={navigate} />
         </section>
         <section id="projects"><ProjectsSection onNavigate={navigate} /></section>
         <section id="process"><CollaborationSection /></section>

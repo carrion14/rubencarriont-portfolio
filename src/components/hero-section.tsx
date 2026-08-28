@@ -33,9 +33,9 @@ export default function HeroSection({ onNavigate }: { onNavigate: (section: stri
 
       <div
         ref={contentRef}
-        className="reveal visible relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 px-6 py-24 text-left lg:grid-cols-[1fr_auto] lg:px-8"
+        className="reveal visible relative z-10 mx-auto grid w-full max-w-6xl items-center gap-8 px-6 pb-28 pt-20 text-left lg:grid-cols-[1fr_auto] lg:gap-14 lg:px-8 lg:py-24"
       >
-        <div className="max-w-4xl">
+        <div className="order-2 max-w-4xl lg:order-1">
           <p className="liquid-pill mb-6 inline-flex px-4 py-2 text-xs font-medium text-[#0071e3]">
             Diseño · Contenido · Web y marketing digital
           </p>
@@ -77,8 +77,8 @@ export default function HeroSection({ onNavigate }: { onNavigate: (section: stri
           </button>
           </div>
         </div>
-        <div className="mx-auto overflow-hidden rounded-full border border-white/70 bg-white/45 p-1 shadow-[0_18px_50px_rgba(0,113,227,0.12)] backdrop-blur-2xl lg:mx-0">
-          <Image src="/img/brand/foto_perfil.png" alt="Retrato de Rubén Carrión" width={144} height={144} priority sizes="144px" className="h-28 w-28 rounded-full object-cover sm:h-36 sm:w-36" />
+        <div className="order-1 mx-auto overflow-hidden rounded-full border border-white/70 bg-white/45 p-1.5 shadow-[0_18px_50px_rgba(0,113,227,0.12)] backdrop-blur-2xl lg:order-2 lg:mx-0">
+          <Image src="/img/brand/foto_perfil.png" alt="Retrato de Rubén Carrión" width={224} height={224} priority sizes="(max-width: 1024px) 160px, 224px" className="h-36 w-36 rounded-full object-cover sm:h-40 sm:w-40 lg:h-56 lg:w-56" />
         </div>
       </div>
     </section>
