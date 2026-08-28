@@ -43,7 +43,7 @@ export default function ServicesSection() {
         <div ref={titleRef} className="reveal max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Servicios</p>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-            Una visión global. Solo lo que tu negocio necesita ahora.
+            Una visión global. <span className="editorial-accent">Solo lo que necesitas ahora.</span>
           </h2>
         </div>
 

@@ -25,7 +25,7 @@ export default function CollaborationSection() {
       <div ref={processRef} className="reveal mx-auto flex max-w-6xl flex-col gap-10">
         <div className="max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Proceso</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Un recorrido claro de principio a fin.</h2>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Un recorrido claro <span className="editorial-accent">de principio a fin.</span></h2>
           <p className="mt-4 text-base leading-relaxed text-[#6e6e73] sm:text-lg"><strong className="key-phrase">Primero entendemos el problema.</strong> Después ordenamos prioridades, alcance y responsabilidades antes de producir.</p>
         </div>
         <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

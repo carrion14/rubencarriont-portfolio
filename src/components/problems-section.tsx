@@ -33,7 +33,7 @@ export default function ProblemsSection() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
         <div ref={titleRef} className="reveal max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Cómo puedo ayudarte</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Tres problemas habituales. Tres mejoras visibles.</h2>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Tres problemas habituales. <span className="editorial-accent">Tres mejoras visibles.</span></h2>
         </div>
         <div ref={cardsRef} className="reveal reveal-delay-1 grid gap-4 md:grid-cols-3">
           {problems.map(({ icon: Icon, title, problem, result }) => (

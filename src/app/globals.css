@@ -902,18 +902,15 @@ body {
 
 /* Editorial accents make long-form copy easier to scan without losing the clean visual system. */
 .key-phrase {
-  color: #1d1d1f;
-  font-weight: 650;
-  text-decoration-line: underline;
-  text-decoration-color: rgba(0, 113, 227, 0.28);
-  text-decoration-thickness: 0.18em;
-  text-underline-offset: 0.12em;
-  text-decoration-skip-ink: none;
+  border-radius: 0.12em;
+  box-shadow: inset 0 -0.32em rgba(0, 113, 227, 0.08);
+  color: #3a3a3c;
+  font-weight: 600;
 }
 
 .editorial-accent {
+  animation: hero-color 2s ease-in-out infinite alternate;
   display: inline-block;
-  color: #0071e3;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.08em;
   font-style: italic;

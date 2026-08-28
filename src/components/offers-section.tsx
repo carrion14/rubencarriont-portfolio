@@ -32,7 +32,7 @@ export default function OffersSection({ onNavigate }: { onNavigate: (section: st
       <div ref={ref} className="reveal mx-auto flex max-w-6xl flex-col gap-8">
         <div className="max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Formas de colaborar</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Empezamos por lo que más necesita tu negocio.</h2>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Empezamos por <span className="editorial-accent">lo que más necesita tu negocio.</span></h2>
           <p className="mt-4 text-base leading-relaxed text-[#6e6e73] sm:text-lg"><strong className="key-phrase">No necesitas contratarlo todo.</strong> Cuéntame tu situación y prepararé una propuesta clara, proporcionada y sin servicios innecesarios.</p>
         </div>
 
