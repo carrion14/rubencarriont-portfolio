@@ -21,6 +21,10 @@ function isVideoAsset(src: string) {
   return src.toLowerCase().endsWith(".mp4")
 }
 
+function isInstagramEmbed(src: string) {
+  return src.startsWith("https://www.instagram.com/") && src.includes("/embed/")
+}
+
 function normalize(value: string) {
   return value
     .toLowerCase()
@@ -108,6 +112,19 @@ function ProjectMedia({
   fill?: boolean
   sizes?: string
 }) {
+  if (isInstagramEmbed(src)) {
+    return (
+      <iframe
+        src={src}
+        title={alt}
+        className="h-[45vh] w-[min(100%,25rem)] rounded-xl border-0 bg-white shadow-sm md:h-[65vh]"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        allowFullScreen
+        loading="lazy"
+      />
+    )
+  }
+
   if (isVideoAsset(src)) {
     return <video src={src} className={className} controls={controls} muted loop playsInline preload="metadata" />
   }
