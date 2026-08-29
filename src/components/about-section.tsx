@@ -4,7 +4,6 @@ import { ArrowDown } from "lucide-react"
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import ProfileCard from "@/components/ui/profile-card"
-import ScrollReveal from "@/components/ui/scroll-reveal"
 
 export default function AboutSection({ onNavigate }: { onNavigate: (section: string) => void }) {
   const titleRef = useScrollReveal<HTMLDivElement>()
@@ -35,34 +34,16 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
             </h2>
           </div>
 
-          <div className="space-y-5 text-[#6e6e73]">
-            <ScrollReveal
-              baseOpacity={0.45}
-              baseRotation={0.8}
-              blurStrength={1.2}
-              textClassName="text-base leading-relaxed sm:text-lg"
-              wordAnimationEnd="top 45%"
-            >
-              Soy Rubén Carrión, diseñador gráfico, community manager y especialista en inteligencia artificial. Ayudo a pequeños negocios a mejorar su presencia visual y digital conectando diseño, contenido, web y marketing.
-            </ScrollReveal>
-            <ScrollReveal
-              baseOpacity={0.45}
-              baseRotation={0.8}
-              blurStrength={1.2}
-              textClassName="text-base leading-relaxed sm:text-lg"
-              wordAnimationEnd="top 45%"
-            >
-              He trabajado en proyectos reales de branding, packaging, campañas, contenido, web y producción visual para empresas como Kärcher España, Bluesun y CPP Chemical Group. Esa experiencia me permite combinar creatividad, ejecución y criterio comercial.
-            </ScrollReveal>
-            <ScrollReveal
-              baseOpacity={0.45}
-              baseRotation={0.8}
-              blurStrength={1.2}
-              textClassName="text-base leading-relaxed sm:text-lg"
-              wordAnimationEnd="top 45%"
-            >
-              No intento incluir todos mis servicios en cada proyecto. Primero detecto qué necesita el negocio y después preparo una solución concreta, con prioridades y límites claros.
-            </ScrollReveal>
+          <div className="space-y-5 text-base leading-relaxed text-[#6e6e73] sm:text-lg">
+            <p>
+              Soy Rubén Carrión, <strong className="key-phrase">diseñador gráfico y community manager</strong>. Ayudo a pequeños negocios a mejorar su presencia visual y digital conectando diseño, contenido, web y marketing, con la inteligencia artificial como herramienta de apoyo.
+            </p>
+            <p>
+              He trabajado en proyectos reales de branding, packaging, campañas, contenido y web para <strong className="key-phrase">Kärcher España, Bluesun y CPP Chemical Group</strong>. Esa experiencia me permite combinar creatividad, ejecución y criterio comercial.
+            </p>
+            <p>
+              Primero detecto qué necesita el negocio y después preparo <strong className="key-phrase">una solución concreta, con prioridades y límites claros</strong>, sin incluir servicios innecesarios.
+            </p>
           </div>
 
           <button

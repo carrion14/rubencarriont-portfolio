@@ -1,6 +1,5 @@
 "use client"
 
-import { CheckCircle2 } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 const processSteps = [
@@ -8,14 +7,6 @@ const processSteps = [
   ["Propuesta y preparación", "Concretamos resultado, alcance, calendario, precio y responsabilidades. Después reunimos materiales, accesos e información y organizamos la producción."],
   ["Producción", "Ejecuto el trabajo acordado siguiendo las prioridades y el calendario definidos."],
   ["Revisión y entrega", "Recogemos el feedback incluido, comprobamos los entregables y publico, entrego o pongo en marcha el trabajo. Finalmente acordamos el siguiente paso."],
-]
-
-const limits = [
-  "Las revisiones incluidas se definen en cada propuesta.",
-  "Los trabajos fuera del alcance se presupuestan aparte.",
-  "No se garantizan ventas, seguidores ni posiciones concretas en buscadores.",
-  "Sí se responde por el proceso y los entregables acordados.",
-  "Los plazos dependen también de la entrega de materiales y las aprobaciones del cliente.",
 ]
 
 export default function CollaborationSection() {
@@ -37,11 +28,8 @@ export default function CollaborationSection() {
             </li>
           ))}
         </ol>
-        <aside className="rounded-3xl border border-[#0071e3]/15 bg-[#eef7ff]/75 p-6 sm:p-8">
-          <h3 className="text-2xl font-semibold text-[#1d1d1f]">Un alcance claro desde el principio.</h3>
-          <ul className="mt-5 grid gap-3 text-sm leading-relaxed text-[#6e6e73] md:grid-cols-2">
-            {limits.map(item => <li key={item} className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#0071e3]" />{item}</li>)}
-          </ul>
+        <aside className="rounded-2xl border border-[#0071e3]/15 bg-[#eef7ff]/75 px-5 py-4 text-sm leading-relaxed text-[#5f6670] sm:px-6">
+          <strong className="text-[#1d1d1f]">Alcance claro desde el principio:</strong> cada propuesta define entregables, revisiones, responsabilidades y plazos; cualquier ampliación se acuerda aparte.
         </aside>
       </div>
     </section>

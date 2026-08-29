@@ -61,7 +61,7 @@ export default function Home() {
         <section id="projects"><ProjectsSection onNavigate={navigate} /></section>
         <section id="process"><CollaborationSection /></section>
         <section id="about"><AboutSection onNavigate={navigate} /></section>
-        <WorkSection onNavigate={navigate} />
+        <div id="work"><WorkSection onNavigate={navigate} /></div>
         <section id="contact"><ContactSection onNavigate={navigate} /></section>
       </main>
     </div>

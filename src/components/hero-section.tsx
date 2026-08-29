@@ -33,7 +33,7 @@ export default function HeroSection({ onNavigate }: { onNavigate: (section: stri
 
       <div
         ref={contentRef}
-        className="reveal visible relative z-10 mx-auto grid w-full max-w-6xl items-center gap-8 px-6 pb-28 pt-20 text-left lg:grid-cols-[1fr_auto] lg:gap-14 lg:px-8 lg:py-24"
+        className="reveal visible relative z-10 mx-auto grid w-full max-w-6xl items-center gap-8 px-6 pb-28 pt-14 text-left lg:grid-cols-[1fr_auto] lg:gap-14 lg:px-8 lg:py-24"
       >
         <div className="order-2 max-w-4xl lg:order-1">
           <p className="liquid-pill mb-6 inline-flex px-4 py-2 text-xs font-medium text-[#0071e3]">

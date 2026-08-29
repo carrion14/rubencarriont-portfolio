@@ -13,7 +13,6 @@ const filters = [
   { key: "design", label: "Diseño" },
   { key: "content", label: "Contenido y redes" },
   { key: "web", label: "Web" },
-  { key: "ai", label: "IA aplicada" },
 ] as const
 
 type FilterKey = (typeof filters)[number]["key"]
@@ -39,15 +38,13 @@ function projectMatchesFilter(project: Project, filter: FilterKey): boolean {
 }
 
 function getProjectServiceKey(project: Project): Exclude<FilterKey, "all"> {
-  const haystack = projectText(project)
-  if (project.category === "ia" || haystack.includes("ia generativa") || haystack.includes("seedream") || haystack.includes("nano banana")) return "ai"
-  if (project.category === "web" || haystack.includes("frontend") || haystack.includes("next.js") || haystack.includes("react")) return "web"
-  if (haystack.includes("instagram") || haystack.includes("redes") || haystack.includes("contenido") || haystack.includes("campana") || haystack.includes("amazon") || haystack.includes("promocion") || haystack.includes("marketing")) return "content"
+  if (["karcher-instagram-ai-design", "karcher-amazon-banners", "cruz-cafune-concert"].includes(project.id)) return "content"
+  if (["berbel-tattoo-web", "karcher-web-campaigns"].includes(project.id) || project.category === "web") return "web"
   return "design"
 }
 
 function getProjectServiceCategory(project: Project) {
-  const labels = { design: "Diseño", content: "Contenido y redes", web: "Web", ai: "IA aplicada" }
+  const labels = { design: "Diseño", content: "Contenido y redes", web: "Web" }
   return labels[getProjectServiceKey(project)]
 }
 
@@ -57,7 +54,7 @@ function getProjectYear(project: Project) {
 }
 
 function sortProjectsByPriority(items: Project[]) {
-  const priority = { content: 0, design: 1, web: 2, ai: 3 }
+  const priority = { content: 0, design: 1, web: 2 }
   return items
     .map((project, index) => ({ project, index }))
     .sort((a, b) => priority[getProjectServiceKey(a.project)] - priority[getProjectServiceKey(b.project)] || getProjectYear(b.project) - getProjectYear(a.project) || a.index - b.index)
@@ -92,7 +89,6 @@ function getSecondaryTags(project: Project) {
 function getResponsibility(project: Project) {
   const main = getMainCategory(project)
   if (main === "Web") return "Diseño web, experiencia de usuario y desarrollo frontend aplicado al proyecto."
-  if (main === "IA aplicada") return "Dirección, generación, selección y acabado de recursos mediante inteligencia artificial aplicada."
   if (main === "Contenido y redes") return "Estrategia visual, composición, adaptación a formatos y producción de contenido para campañas o redes."
   return "Diseño gráfico, composición visual y preparación de entregables."
 }
