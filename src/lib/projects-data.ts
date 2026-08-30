@@ -41,6 +41,7 @@ export const projects: Project[] = [
     images: [
       "/img/projects/2026-karcher-instagram-management/instagram-profile.png",
       "https://www.instagram.com/reel/DbYF5kUIawl/embed/",
+      "https://www.instagram.com/reel/DadGiyIoPmw/embed/",
       "/img/projects/2026-karcher-instagram-ai/instagram-ai-01.jpg",
       "/img/projects/2026-karcher-instagram-ai/instagram-ai-02.jpg",
       "/img/projects/2026-karcher-instagram-ai/instagram-ai-03.jpeg",
