@@ -62,7 +62,13 @@ const jobs = [
   },
 ]
 
-export default function WorkSection({ onNavigate }: { onNavigate: (section: string) => void }) {
+export default function WorkSection({
+  onNavigate,
+  ctaLabel = "Cuéntame qué necesita tu negocio",
+}: {
+  onNavigate: (section: string) => void
+  ctaLabel?: string
+}) {
   const titleRef = useScrollReveal<HTMLDivElement>()
   const listRef = useScrollReveal<HTMLDivElement>()
 
@@ -140,7 +146,7 @@ export default function WorkSection({ onNavigate }: { onNavigate: (section: stri
           onClick={() => onNavigate("contact")}
           className="flex items-center gap-2 text-sm font-medium text-[#0071e3] transition-colors hover:text-blue-600"
         >
-          Cuéntame qué necesita tu negocio
+          {ctaLabel}
           <ArrowDown className="h-3 w-3" />
         </button>
       </div>
