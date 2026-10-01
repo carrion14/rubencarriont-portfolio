@@ -7,7 +7,7 @@ const jobs = [
   {
     role: "Diseñador Gráfico & IA Designer",
     company: "Kärcher España",
-    period: "Enero de 2026 — Actualidad",
+    period: "Enero de 2026 — Septiembre de 2026",
     responsibilities: [
       "Diseño y adaptación de campañas para web, Amazon, retail, ferias, contenido social y materiales internos.",
       "Creación de piezas editoriales, banners, soportes impresos y recursos visuales con criterio de marca.",
