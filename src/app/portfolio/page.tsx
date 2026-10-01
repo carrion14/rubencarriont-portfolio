@@ -28,7 +28,7 @@ export default function ProfessionalPortfolio() {
     <main className="relative w-full overflow-hidden bg-transparent pb-20">
       <div className="noise pointer-events-none fixed inset-0 z-[999]" />
 
-      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+      <header className="fixed left-5 right-5 top-4 z-50 sm:left-6 sm:right-6">
         <div className="liquid-pill mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2.5 shadow-[0_16px_40px_rgba(0,113,227,0.09)]">
           <button onClick={() => navigate("top")} className="text-sm font-semibold text-[#1d1d1f]">
             Rubén Carrión
