@@ -46,7 +46,7 @@ export default function ProfessionalPortfolio() {
         </div>
       </header>
 
-      <section id="top" className="relative flex min-h-[96svh] w-full items-center justify-center overflow-hidden px-8 pb-20 pt-40 sm:px-10 sm:pt-36 lg:px-8 lg:pt-28">
+      <section id="top" className="portfolio-hero relative flex min-h-[96svh] w-full items-center justify-center overflow-hidden px-8 pb-20 pt-40 sm:px-10 sm:pt-36 lg:px-8 lg:pt-28">
         <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#f8fbff_0%,#eef7ff_48%,#ffffff_100%)]" />
         <SideRays className="absolute inset-0 z-[1]" speed={2.1} rayColor1="#005CFF" rayColor2="#00C8FF" intensity={1.55} spread={2.1} origin="top-right" tilt={-7} saturation={1.25} blend={0.48} falloff={1.65} opacity={0.65} />
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.45),rgba(255,255,255,0.08)_36%,rgba(255,255,255,0.8)_78%)]" />
