@@ -29,7 +29,7 @@ export default function ProfessionalPortfolio() {
       <div className="noise pointer-events-none fixed inset-0 z-[999]" />
 
       <header className="fixed left-5 right-5 top-4 z-50 sm:left-6 sm:right-6">
-        <div className="liquid-pill mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2.5 shadow-[0_16px_40px_rgba(0,113,227,0.09)]">
+        <div className="liquid-pill mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3 shadow-[0_16px_40px_rgba(0,113,227,0.09)] sm:px-7">
           <button onClick={() => navigate("top")} className="text-sm font-semibold text-[#1d1d1f]">
             Rubén Carrión
           </button>
