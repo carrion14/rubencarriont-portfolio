@@ -2,6 +2,7 @@
 
 import { ArrowRight, CalendarDays, Globe2, Sparkles } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { RevealWords } from "@/components/motion"
 
 const waysToWork = [
   {
@@ -26,17 +27,18 @@ const waysToWork = [
 
 export default function OffersSection({ onNavigate }: { onNavigate: (section: string) => void }) {
   const ref = useScrollReveal<HTMLDivElement>()
+  const gridRef = useScrollReveal<HTMLDivElement>()
 
   return (
     <section className="band band-gray">
       <div ref={ref} className="reveal container-wide">
         <div className="mx-auto max-w-[820px] text-center">
           <p className="kicker">Formas de colaborar</p>
-          <h2 className="headline mt-3">Empezamos por lo que más necesita tu negocio.</h2>
+          <h2 className="headline mt-3"><RevealWords text="Empezamos por lo que más necesita tu negocio." /></h2>
           <p className="lead mx-auto mt-6 max-w-[640px]">Cuéntame qué pasa y te preparo una propuesta a medida. Si solo hace falta arreglar la ficha de Google, la propuesta será eso.</p>
         </div>
 
-        <div className="mt-16 grid gap-12 md:mt-20 md:grid-cols-3 md:gap-10">
+        <div ref={gridRef} className="reveal-stagger mt-16 grid gap-12 md:mt-20 md:grid-cols-3 md:gap-10">
           {waysToWork.map(({ icon: Icon, title, text, detail }) => (
             <article key={title} className="text-center md:text-left">
               <Icon className="mx-auto h-9 w-9 text-[#1d1d1f] md:mx-0" strokeWidth={1.5} />

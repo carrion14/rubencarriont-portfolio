@@ -1,6 +1,7 @@
 "use client"
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { RevealWords, ScrollWords } from "@/components/motion"
 
 const processSteps = [
   ["Diagnóstico", "Hablamos de tu negocio y de lo que te preocupa. Muchas veces el problema no es el que parecía, así que decidimos qué va primero y qué puede esperar."],
@@ -11,15 +12,16 @@ const processSteps = [
 
 export default function CollaborationSection() {
   const processRef = useScrollReveal<HTMLDivElement>()
+  const stepsRef = useScrollReveal<HTMLOListElement>()
   return (
     <section className="band band-black">
       <div ref={processRef} className="reveal container-wide">
         <div className="mx-auto max-w-[820px] text-center">
           <p className="kicker">Proceso</p>
-          <h2 className="headline mt-3 text-[#f5f5f7]">Cómo trabajamos. <span className="headline-muted">Sin sorpresas en la factura.</span></h2>
-          <p className="lead mx-auto mt-6 max-w-[640px]">Primero entiendo el problema. Alcance, plazos y precio quedan por escrito antes de empezar.</p>
+          <h2 className="headline mt-3 text-[#f5f5f7]"><RevealWords text="Cómo trabajamos." /> <RevealWords text="Sin sorpresas en la factura." className="headline-muted" delay={0.3} /></h2>
+          <ScrollWords text="Primero entiendo el problema. Alcance, plazos y precio quedan por escrito antes de empezar." className="mx-auto mt-10 max-w-[760px] text-[clamp(1.6rem,3.6vw,2.5rem)] font-bold leading-[1.15] tracking-[-0.025em] text-[#f5f5f7]" />
         </div>
-        <ol className="mt-16 grid gap-px overflow-hidden rounded-[1.75rem] bg-[#333336] sm:grid-cols-2 md:mt-20 lg:grid-cols-4">
+        <ol ref={stepsRef} className="reveal-stagger mt-16 grid gap-px overflow-hidden rounded-[1.75rem] bg-[#333336] sm:grid-cols-2 md:mt-20 lg:grid-cols-4">
           {processSteps.map(([title, text], index) => (
             <li key={title} className="bg-[#1d1d1f] p-8 md:p-9">
               <span className="block text-[3.5rem] font-bold leading-none tracking-[-0.04em] text-[#2997ff] tabular-nums">{String(index + 1).padStart(2, "0")}</span>

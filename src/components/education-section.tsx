@@ -36,9 +36,9 @@ export default function EducationSection({ onNavigate }: { onNavigate: (section:
           <h2 className="headline mt-3">Cine, diseño <span className="headline-muted">y algo de código.</span></h2>
         </div>
 
-        <div ref={cardsRef} className="reveal reveal-delay-1 mt-14 grid gap-5 md:mt-20 md:grid-cols-3">
+        <div ref={cardsRef} className="reveal-stagger mt-14 grid gap-5 md:mt-20 md:grid-cols-3">
           {education.map((item) => (
-            <article key={item.title} className="tile p-8 md:p-10">
+            <article key={item.title} className="tile tile-lift p-8 md:p-10">
               <GraduationCap className="h-8 w-8 text-[#0071e3]" strokeWidth={1.6} />
               <p className="mt-6 text-sm text-[#86868b]">{item.period}</p>
               <h3 className="mt-1 text-[1.5rem] font-bold leading-tight tracking-[-0.02em]">{item.title}</h3>

@@ -226,7 +226,7 @@ p, li, dd {
 .hero-name {
   display: inline;
   font-size: inherit;
-  background: linear-gradient(100deg, #0058d0 0%, #0071e3 45%, #2f9bff 100%);
+  background: linear-gradient(100deg, #0058d0 0%, #0071e3 30%, #2f9bff 55%, #0071e3 80%, #0058d0 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1253,3 +1253,110 @@ section[id] {
 @media (prefers-reduced-transparency: reduce) {
   .global-nav { background: #fbfbfd; backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
+
+/* ─── Animaciones ─── */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  gap: 3.5rem;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3.5rem;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - 3.5rem)); }
+}
+
+/* Las tarjetas responden al cursor elevándose un poco */
+@media (hover: hover) {
+  .tile-lift {
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tile-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+  }
+
+  .tile-lift:hover img { transform: scale(1.04); }
+  .tile-lift img { transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0, 113, 227, 0.28); }
+}
+
+/* Degradado de texto que se desplaza lentamente en el acento de la portada */
+.hero-name {
+  background-size: 200% auto;
+  animation: hero-shimmer 8s ease-in-out infinite alternate;
+}
+
+@keyframes hero-shimmer {
+  from { background-position: 0% center; }
+  to { background-position: 100% center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; flex-wrap: wrap; justify-content: center; }
+  .marquee { mask-image: none; -webkit-mask-image: none; }
+}
+
+/* Entrada al hacer scroll: más recorrido, desenfoque que se aclara */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.985);
+  filter: blur(8px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Hijos en cascada: cada tarjeta entra un poco después que la anterior */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-stagger.visible > * { opacity: 1; transform: none; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
+.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
+.reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.6s; }
+.reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.7s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* La barra se oscurece al pasar por secciones negras, como en apple.com */
+.global-nav { transition: background-color 400ms ease, box-shadow 400ms ease; }
+.global-nav-brand { color: #1d1d1f; transition: color 400ms ease; }
+.global-nav-dark { background: rgba(22, 22, 23, 0.82); box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08); }
+.global-nav-dark .global-nav-brand { color: #f5f5f7; }
+.global-nav-dark .global-nav-link { color: rgba(245, 245, 247, 0.75); }
+.global-nav-dark .global-nav-link:hover,
+.global-nav-dark .global-nav-link[aria-current="true"] { color: #ffffff; }

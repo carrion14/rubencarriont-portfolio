@@ -2,6 +2,7 @@
 
 import { ChevronRight } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { RevealWords } from "@/components/motion"
 
 const contactEmail = "rubencarrion6@gmail.com"
 
@@ -18,7 +19,7 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
       <div className="container-apple">
         <div ref={titleRef} className="reveal mx-auto max-w-[760px] text-center">
           <p className="kicker">Contacto</p>
-          <h2 className="headline mt-3">Cuéntame qué está fallando. <span className="headline-muted">Te contesto yo.</span></h2>
+          <h2 className="headline mt-3"><RevealWords text="Cuéntame qué está fallando." /> <RevealWords text="Te contesto yo." className="headline-muted" delay={0.35} /></h2>
           <p className="lead mx-auto mt-6 max-w-[620px]">
             Escríbeme con lo que tengas, aunque no sepas bien qué necesitas. Normalmente respondo con un par de preguntas y una idea de por dónde empezar.
           </p>

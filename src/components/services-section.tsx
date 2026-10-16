@@ -3,6 +3,7 @@
 import Image from "next/image"
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { RevealWords, ScrollZoom } from "@/components/motion"
 
 const capabilities = [
   {
@@ -32,12 +33,12 @@ export default function ServicesSection() {
       <div className="container-wide">
         <div ref={titleRef} className="reveal mx-auto max-w-[820px] text-center">
           <p className="kicker">Servicios</p>
-          <h2 className="headline mt-3">Hago varias cosas. <span className="headline-muted">No hace falta que las contrates todas.</span></h2>
+          <h2 className="headline mt-3"><RevealWords text="Hago varias cosas." /> <RevealWords text="No hace falta que las contrates todas." className="headline-muted" delay={0.3} /></h2>
         </div>
 
-        <div ref={cardsRef} className="reveal reveal-delay-1 mt-14 grid gap-5 md:mt-20 md:grid-cols-6">
+        <div ref={cardsRef} className="reveal-stagger mt-14 grid gap-5 md:mt-20 md:grid-cols-6">
           {capabilities.map((card) => (
-            <article key={card.title} className={`tile flex flex-col ${card.layout}`}>
+            <article key={card.title} className={`tile tile-lift flex flex-col ${card.layout}`}>
               <div className="p-8 md:p-10">
                 <h3 className="headline-sm">{card.title}</h3>
                 <p className="mt-4 text-[1.0625rem] leading-relaxed text-[#6e6e73]">{card.text}</p>
@@ -45,7 +46,9 @@ export default function ServicesSection() {
                 <p className="mt-5 text-sm font-semibold text-[#1d1d1f]">{card.tags.join(" · ")}</p>
               </div>
               <div className="relative mx-8 mt-auto aspect-[16/10] overflow-hidden rounded-t-[1.25rem] md:mx-10">
-                <Image src={card.image.src} alt={card.image.alt} fill sizes="(max-width: 768px) 90vw, 520px" className="object-cover" />
+                <ScrollZoom className="absolute inset-0">
+                  <Image src={card.image.src} alt={card.image.alt} fill sizes="(max-width: 768px) 90vw, 520px" className="object-cover" />
+                </ScrollZoom>
               </div>
             </article>
           ))}
@@ -61,7 +64,9 @@ export default function ServicesSection() {
               <p className="mt-5 text-sm font-semibold text-[#f5f5f7]">Diseño web · Desarrollo · SEO local · Mantenimiento</p>
             </div>
             <div className="relative mx-8 mb-8 aspect-[16/10] overflow-hidden rounded-[1.25rem] md:mx-0 md:mb-0 md:mr-12">
-              <Image src="/img/projects/2026-berbel-tattoo-web/berbel-catalogo.png" alt="Catálogo de la web de Berbel Tattoo" fill sizes="(max-width: 768px) 90vw, 520px" className="object-cover object-top" />
+              <ScrollZoom className="absolute inset-0">
+                <Image src="/img/projects/2026-berbel-tattoo-web/berbel-catalogo.png" alt="Catálogo de la web de Berbel Tattoo" fill sizes="(max-width: 768px) 90vw, 520px" className="object-cover object-top" />
+              </ScrollZoom>
             </div>
           </article>
         </div>

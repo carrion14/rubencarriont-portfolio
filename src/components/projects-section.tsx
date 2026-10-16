@@ -3,9 +3,11 @@
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { flushSync } from "react-dom"
+import { motion } from "motion/react"
 import { Book, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react"
 import { projects, type Project } from "@/lib/projects-data"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { Reveal, RevealWords } from "@/components/motion"
 
 const filters = [
   { key: "all", label: "Todos" },
@@ -299,8 +301,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center p-2 sm:items-center sm:p-8" onClick={(e) => { if (e.target === e.currentTarget) onClose() }}>
-      <div className="absolute inset-0 bg-[rgba(0,0,0,0.35)] backdrop-blur-2xl" />
-      <div
+      <motion.div className="absolute inset-0 bg-[rgba(0,0,0,0.35)] backdrop-blur-2xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} />
+      <motion.div
+        initial={{ opacity: 0, y: 40, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ type: "spring", bounce: 0, duration: 0.5 }}
         role="dialog"
         aria-modal="true"
         aria-labelledby="project-modal-title"
@@ -387,7 +392,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
@@ -407,7 +412,7 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
       <div className="container-wide flex flex-col gap-10">
         <div ref={titleRef} className="reveal mx-auto max-w-[820px] text-center">
           <p className="kicker">Portfolio</p>
-          <h2 className="headline mt-3">Proyectos</h2>
+          <h2 className="headline mt-3"><RevealWords text="Proyectos" /></h2>
           <p className="lead mx-auto mt-6 max-w-[640px]">
             Trabajo real para Kärcher España, Berbel Tattoo y otros clientes, más algún proyecto propio. Abre cualquiera para ver las piezas y el contexto.
           </p>
@@ -435,7 +440,11 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
           {filtered.length > 0 ? (
-            visibleProjects.map((project) => <ProjectCard key={project.id} project={project} onClick={() => setSelected(project)} />)
+            visibleProjects.map((project, index) => (
+              <Reveal key={`${activeFilter}-${project.id}`} delay={(index % 4) * 0.08} y={40}>
+                <ProjectCard project={project} onClick={() => setSelected(project)} />
+              </Reveal>
+            ))
           ) : (
             <div className="col-span-full py-24 text-center text-sm text-[#86868b]">
               Todavía no hay proyectos públicos en esta categoría.
