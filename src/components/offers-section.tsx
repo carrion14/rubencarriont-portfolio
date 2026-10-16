@@ -28,28 +28,31 @@ export default function OffersSection({ onNavigate }: { onNavigate: (section: st
   const ref = useScrollReveal<HTMLDivElement>()
 
   return (
-    <section className="relative px-6 py-20 sm:px-8 sm:py-24">
-      <div ref={ref} className="reveal mx-auto flex max-w-6xl flex-col gap-8">
-        <div className="max-w-3xl">
-          <p className="eyebrow">Formas de colaborar</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Empezamos por <span className="editorial-accent">lo que más necesita tu negocio.</span></h2>
-          <p className="mt-4 text-base leading-relaxed text-[#6e6e73] sm:text-lg">Cuéntame qué pasa y te preparo una propuesta a medida. <strong className="key-phrase">Si solo hace falta arreglar la ficha de Google, la propuesta será eso.</strong></p>
+    <section className="band band-gray">
+      <div ref={ref} className="reveal container-wide">
+        <div className="mx-auto max-w-[820px] text-center">
+          <p className="kicker">Formas de colaborar</p>
+          <h2 className="headline mt-3">Empezamos por lo que más necesita tu negocio.</h2>
+          <p className="lead mx-auto mt-6 max-w-[640px]">Cuéntame qué pasa y te preparo una propuesta a medida. Si solo hace falta arreglar la ficha de Google, la propuesta será eso.</p>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="mt-16 grid gap-12 md:mt-20 md:grid-cols-3 md:gap-10">
           {waysToWork.map(({ icon: Icon, title, text, detail }) => (
-            <article key={title} className="surface surface-hover p-6 sm:p-7">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0071e3]/10 text-[#0071e3]"><Icon className="h-5 w-5" /></div>
-              <h3 className="mt-5 text-xl font-semibold text-[#1d1d1f]">{title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#6e6e73]">{text}</p>
-              <p className="mt-5 border-t border-[#0071e3]/10 pt-5 text-xs leading-relaxed text-[#86868b]">{detail}</p>
+            <article key={title} className="text-center md:text-left">
+              <Icon className="mx-auto h-9 w-9 text-[#1d1d1f] md:mx-0" strokeWidth={1.5} />
+              <h3 className="mt-5 text-[1.5rem] font-bold leading-tight tracking-[-0.02em]">{title}</h3>
+              <p className="mt-3 text-[1.0625rem] leading-relaxed text-[#6e6e73]">{text}</p>
+              <p className="mt-3 text-sm leading-relaxed text-[#86868b]">{detail}</p>
             </article>
           ))}
         </div>
 
-        <div className="flex flex-col items-start justify-between gap-5 rounded-3xl border border-[#0071e3]/15 bg-[#eef7ff]/75 p-6 sm:flex-row sm:items-center sm:p-8">
-          <div><h3 className="text-xl font-semibold text-[#1d1d1f]">¿No sabes por dónde empezar?</h3><p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#6e6e73]">Es lo más normal. Cuéntame qué te preocupa y lo ordenamos juntos.</p></div>
-          <button onClick={() => onNavigate("contact")} className="press inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-[#0071e3] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#0071e3]/20 transition-colors hover:bg-[#0077ed] sm:w-auto">Cuéntame qué necesitas <ArrowRight className="h-4 w-4" /></button>
+        <div className="mt-20 flex flex-col items-center text-center">
+          <h3 className="headline-sm">¿No sabes por dónde empezar?</h3>
+          <p className="mt-3 text-[1.0625rem] text-[#6e6e73]">Es lo más normal. Cuéntame qué te preocupa y lo ordenamos juntos.</p>
+          <button type="button" onClick={() => onNavigate("contact")} className="btn-apple btn-primary mt-7">
+            Cuéntame qué necesitas <ArrowRight className="h-4 w-4" />
+          </button>
         </div>
       </div>
     </section>

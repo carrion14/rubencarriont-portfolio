@@ -4,22 +4,25 @@ const year = new Date().getFullYear()
 
 export default function SiteFooter({ variant = "home" }: { variant?: "home" | "portfolio" }) {
   return (
-    <footer className={`relative px-6 pt-12 sm:px-8 ${variant === "home" ? "pb-36" : "pb-12"}`}>
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 border-t border-[#1d1d1f]/[0.08] pt-8 text-sm text-[#6e6e73] sm:flex-row sm:items-start sm:justify-between">
-        <div className="max-w-sm">
-          <p className="font-semibold text-[#1d1d1f]">Rubén Carrión</p>
-          <p className="mt-1 leading-relaxed">Diseñador gráfico y community manager en Barcelona. Trabajo con negocios de Barcelona, Badalona y alrededores.</p>
+    <footer className="bg-[#f5f5f7] px-5 pb-10 pt-6 text-xs leading-relaxed text-[#6e6e73]">
+      <div className="mx-auto max-w-[980px]">
+        <p className="border-b border-[#d2d2d7] pb-4">
+          Rubén Carrión, diseñador gráfico y community manager en Barcelona. Trabajo con negocios de Barcelona, Badalona y alrededores.
+        </p>
+        <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <p>Copyright © {year} Rubén Carrión. Todos los derechos reservados.</p>
+          <nav aria-label="Enlaces del pie de página" className="flex flex-wrap gap-x-2 gap-y-1">
+            {variant === "home" ? (
+              <Link href="/portfolio" className="text-[#424245] hover:underline">Portfolio profesional</Link>
+            ) : (
+              <Link href="/" className="text-[#424245] hover:underline">Servicios para negocios</Link>
+            )}
+            <span aria-hidden="true" className="text-[#d2d2d7]">|</span>
+            <a href="mailto:rubencarrion6@gmail.com" className="text-[#424245] hover:underline">Email</a>
+            <span aria-hidden="true" className="text-[#d2d2d7]">|</span>
+            <a href="https://www.linkedin.com/in/rubencarriontorres/" target="_blank" rel="noopener noreferrer" className="text-[#424245] hover:underline">LinkedIn</a>
+          </nav>
         </div>
-        <nav aria-label="Enlaces del pie de página" className="flex flex-wrap gap-x-6 gap-y-2">
-          {variant === "home" ? (
-            <Link href="/portfolio" className="transition-colors hover:text-[#0066cc]">Portfolio profesional</Link>
-          ) : (
-            <Link href="/" className="transition-colors hover:text-[#0066cc]">Servicios para negocios</Link>
-          )}
-          <a href="mailto:rubencarrion6@gmail.com" className="transition-colors hover:text-[#0066cc]">rubencarrion6@gmail.com</a>
-          <a href="https://www.linkedin.com/in/rubencarriontorres/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#0066cc]">LinkedIn</a>
-        </nav>
-        <p className="text-xs text-[#86868b]">© {year} Rubén Carrión</p>
       </div>
     </footer>
   )

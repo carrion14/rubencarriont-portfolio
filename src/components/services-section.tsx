@@ -1,6 +1,6 @@
 "use client"
 
-import { Globe2, Layers3, Palette } from "lucide-react"
+import Image from "next/image"
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
@@ -9,23 +9,17 @@ const capabilities = [
     title: "Diseño gráfico",
     text: "Identidades, campañas, flyers, cartelería, packaging. Preparé más de 60 etiquetas para Bluesun y campañas para la web y las tiendas de Kärcher, así que la parte de producción, la que no se ve, la tengo muy trabajada.",
     aiNote: "Uso IA cuando ahorra tiempo o abre una idea visual. El criterio lo pongo yo.",
-    tags: ["Identidad visual", "Campañas", "Impresión", "Piezas comerciales", "Adaptaciones"],
-    icon: Palette,
+    tags: ["Identidad visual", "Campañas", "Impresión", "Packaging"],
+    image: { src: "/img/projects/2023-ntrsv-visual-identity/1_ciwqcm.png", alt: "Identidad visual de NTRSV" },
+    layout: "md:col-span-3",
   },
   {
     title: "Contenido para redes sociales",
     text: "Puedo llevar el proceso entero o solo una parte: decidir qué contar, grabar, editar, escribir los textos y publicar. En Kärcher España coordiné su Instagram durante meses.",
     aiNote: "La IA me ayuda a idear y adaptar formatos. Lo que se graba es real.",
-    tags: ["Estrategia", "Grabación", "Diseño", "Edición", "Publicación"],
-    icon: Layers3,
-  },
-  {
-    title: "Web, SEO y Google Business",
-    text: "Diseño y programo webs (esta también) y me ocupo del SEO local y del Perfil de Empresa de Google, que en un negocio de barrio pesa tanto como la propia web.",
-    aiNote: "IA puntual para revisar datos y ordenar procesos.",
-    tags: ["Diseño web", "Desarrollo web", "SEO local", "Google Business", "Mantenimiento"],
-    icon: Globe2,
-    featured: true,
+    tags: ["Estrategia", "Grabación", "Edición", "Publicación"],
+    image: { src: "/img/projects/2026-karcher-brand-campaign/hpw-c-100.jpg", alt: "Pieza para redes de la campaña Built for Life de Kärcher" },
+    layout: "md:col-span-3",
   },
 ]
 
@@ -34,34 +28,42 @@ export default function ServicesSection() {
   const cardsRef = useScrollReveal<HTMLDivElement>()
 
   return (
-    <section className="relative flex w-full flex-col items-center justify-center px-8 py-20 sm:py-24">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
-        <div ref={titleRef} className="reveal max-w-3xl">
-          <p className="eyebrow">Servicios</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-            Hago varias cosas. <span className="editorial-accent">No hace falta que las contrates todas.</span>
-          </h2>
+    <section className="band band-white">
+      <div className="container-wide">
+        <div ref={titleRef} className="reveal mx-auto max-w-[820px] text-center">
+          <p className="kicker">Servicios</p>
+          <h2 className="headline mt-3">Hago varias cosas. <span className="headline-muted">No hace falta que las contrates todas.</span></h2>
         </div>
 
-        <div ref={cardsRef} className="reveal reveal-delay-1 grid gap-4 md:grid-cols-3">
-          {capabilities.map((card) => {
-            const Icon = card.icon
-            return (
-              <article key={card.title} className={`surface surface-hover flex flex-col p-6 ${card.featured ? "surface-accent" : ""}`}>
-                <Icon className="mb-5 h-5 w-5 text-[#0071e3]" />
-                <h3 className="text-lg font-semibold text-[#1d1d1f]">{card.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#6e6e73]">{card.text}</p>
-                <p className="mt-3 text-xs leading-relaxed text-[#86868b]">{card.aiNote}</p>
-                <div className="mt-auto flex flex-wrap gap-2 pt-5">
-                  {card.tags.map((tag) => (
-                    <span key={tag} className="rounded-full bg-[rgba(0,113,227,0.07)] px-3 py-1 text-xs font-medium text-[#0071e3]">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            )
-          })}
+        <div ref={cardsRef} className="reveal reveal-delay-1 mt-14 grid gap-5 md:mt-20 md:grid-cols-6">
+          {capabilities.map((card) => (
+            <article key={card.title} className={`tile flex flex-col ${card.layout}`}>
+              <div className="p-8 md:p-10">
+                <h3 className="headline-sm">{card.title}</h3>
+                <p className="mt-4 text-[1.0625rem] leading-relaxed text-[#6e6e73]">{card.text}</p>
+                <p className="mt-4 text-sm text-[#86868b]">{card.aiNote}</p>
+                <p className="mt-5 text-sm font-semibold text-[#1d1d1f]">{card.tags.join(" · ")}</p>
+              </div>
+              <div className="relative mx-8 mt-auto aspect-[16/10] overflow-hidden rounded-t-[1.25rem] md:mx-10">
+                <Image src={card.image.src} alt={card.image.alt} fill sizes="(max-width: 768px) 90vw, 520px" className="object-cover" />
+              </div>
+            </article>
+          ))}
+
+          <article className="tile tile-dark grid items-center gap-8 md:col-span-6 md:grid-cols-2">
+            <div className="p-8 md:p-12">
+              <p className="kicker !text-[#2997ff]">Lo que más piden</p>
+              <h3 className="headline-sm mt-3 text-[#f5f5f7]">Web, SEO local y Google Business</h3>
+              <p className="mt-4 text-[1.0625rem] leading-relaxed text-[#a1a1a6]">
+                Diseño y programo webs (esta también) y me ocupo del SEO local y del Perfil de Empresa de Google, que en un negocio de barrio pesa tanto como la propia web.
+              </p>
+              <p className="mt-4 text-sm text-[#86868b]">IA puntual para revisar datos y ordenar procesos.</p>
+              <p className="mt-5 text-sm font-semibold text-[#f5f5f7]">Diseño web · Desarrollo · SEO local · Mantenimiento</p>
+            </div>
+            <div className="relative mx-8 mb-8 aspect-[16/10] overflow-hidden rounded-[1.25rem] md:mx-0 md:mb-0 md:mr-12">
+              <Image src="/img/projects/2026-berbel-tattoo-web/berbel-catalogo.png" alt="Catálogo de la web de Berbel Tattoo" fill sizes="(max-width: 768px) 90vw, 520px" className="object-cover object-top" />
+            </div>
+          </article>
         </div>
       </div>
     </section>
