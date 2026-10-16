@@ -8,6 +8,7 @@ import EducationSection from "@/components/education-section"
 import ProjectsSection from "@/components/projects-section"
 import WorkSection from "@/components/work-section"
 import SideRays from "@/components/ui/side-rays"
+import SiteFooter from "@/components/site-footer"
 
 const navigation = [
   ["projects", "Proyectos"],
@@ -25,7 +26,7 @@ export default function ProfessionalPortfolio() {
   }
 
   return (
-    <main className="relative w-full overflow-hidden bg-transparent pb-20">
+    <main className="relative w-full overflow-hidden bg-transparent">
       <div className="noise pointer-events-none fixed inset-0 z-[999]" />
 
       <header className="fixed left-5 right-5 top-4 z-50 sm:left-6 sm:right-6">
@@ -53,14 +54,14 @@ export default function ProfessionalPortfolio() {
 
         <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
           <div className="order-2 max-w-4xl lg:order-1">
-            <p className="liquid-pill mb-6 inline-flex px-4 py-2 text-xs font-medium text-[#0071e3]">
-              Portfolio profesional · Barcelona
-            </p>
             <h1 className="text-5xl font-semibold leading-[0.96] tracking-tighter text-[#1d1d1f] sm:text-7xl md:text-8xl">
-              Diseño con criterio. <span className="hero-name">Ejecución que funciona.</span>
+              <span className="liquid-pill mb-6 flex w-fit px-4 py-2 text-xs font-medium leading-normal tracking-normal text-[#0066cc]">
+                Portfolio de Rubén Carrión · Diseñador gráfico en Barcelona
+              </span>
+              Diseño que sale de la pantalla <span className="hero-name">y llega a la tienda.</span>
             </h1>
-            <p className="mt-7 max-w-3xl text-base leading-relaxed text-[#6e6e73] sm:text-xl">
-              Soy <strong className="key-phrase">Rubén Carrión, diseñador gráfico y creador digital</strong>. Trabajo en campañas, contenido, packaging, retail, web y producción visual, conectando creatividad, marca y necesidades reales de negocio.
+            <p className="mt-7 max-w-2xl text-base leading-relaxed text-[#515154] sm:text-xl">
+              He hecho campañas para la web y el retail de <strong className="key-phrase">Kärcher España</strong>, más de 60 etiquetas para Bluesun y la web de Berbel Tattoo, programada desde cero. Esto es una selección.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button onClick={() => navigate("projects")} className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0071e3] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95">
@@ -86,14 +87,14 @@ export default function ProfessionalPortfolio() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 rounded-[2rem] border border-white/60 bg-white/40 p-6 shadow-[0_24px_70px_rgba(29,29,31,0.06)] backdrop-blur-2xl sm:p-10 lg:grid-cols-[auto_1fr] lg:gap-16">
           <Image src="/img/brand/foto_cara.png" alt="Rubén Carrión" width={340} height={420} sizes="(max-width: 1024px) 80vw, 340px" className="mx-auto max-h-[27rem] w-full max-w-sm rounded-3xl object-cover" />
           <div>
-            <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Sobre mí</p>
+            <p className="eyebrow">Sobre mí</p>
             <h2 className="mt-2 text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-              Perfil creativo <span className="editorial-accent">con visión global.</span>
+              Un perfil mixto, <span className="editorial-accent">y a propósito.</span>
             </h2>
             <div className="mt-6 space-y-5 text-base leading-relaxed text-[#6e6e73] sm:text-lg">
-              <p>Mi perfil combina <strong className="key-phrase">diseño gráfico, contenido, web y herramientas de inteligencia artificial</strong>. Me adapto con facilidad a equipos, marcas y formatos distintos.</p>
-              <p>He desarrollado trabajo real para <strong className="key-phrase">Kärcher España, Bluesun y CPP Chemical Group</strong>, desde campañas y retail hasta packaging, maquetación, redes y entornos digitales.</p>
-              <p>Me interesa convertir ideas en piezas claras, coherentes y bien ejecutadas, cuidando tanto el concepto como los detalles de producción.</p>
+              <p>Estudié cine y producción audiovisual, después <strong className="key-phrase">diseño gráfico en l&apos;Escola del Treball</strong>, y en 2025 me metí en un bootcamp de front-end. Cada etapa me dejó una herramienta que sigo usando.</p>
+              <p>En <strong className="key-phrase">Kärcher España, Bluesun y CPP Chemical Group</strong> he tocado casi de todo: banners para Amazon, un stand de feria, una revista de producto, etiquetado con normativa europea. Me adapto rápido a marcas con manual estricto.</p>
+              <p>Lo que más disfruto es el último tramo, cuando una pieza pasa de idea a archivo listo para imprenta o para publicar.</p>
             </div>
           </div>
         </div>
@@ -101,7 +102,7 @@ export default function ProfessionalPortfolio() {
 
       <section id="contact" className="relative px-6 py-20 text-center sm:px-8 sm:py-28">
         <div className="mx-auto max-w-3xl rounded-[2rem] border border-[#0071e3]/15 bg-[#eef7ff]/75 p-8 sm:p-12">
-          <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Contacto</p>
+          <p className="eyebrow">Contacto</p>
           <h2 className="mt-2 text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">¿Hablamos?</h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#6e6e73]">Disponible para oportunidades profesionales, colaboraciones y proyectos en los que diseño y ejecución tengan el mismo peso.</p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
@@ -115,6 +116,7 @@ export default function ProfessionalPortfolio() {
           <Link href="/" className="mt-7 inline-block text-xs font-medium text-[#86868b] transition-colors hover:text-[#0071e3]">Ver web completa</Link>
         </div>
       </section>
+      <SiteFooter variant="portfolio" />
     </main>
   )
 }

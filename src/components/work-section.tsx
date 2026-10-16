@@ -77,7 +77,7 @@ export default function WorkSection({
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:gap-14">
         <div ref={titleRef} className="reveal flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Experiencia</p>
+            <p className="eyebrow">Experiencia</p>
             <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
               Trayectoria profesional
             </h2>
@@ -96,7 +96,7 @@ export default function WorkSection({
           {jobs.map((job) => (
             <article
               key={`${job.company}-${job.period}`}
-              className="group rounded-3xl bg-white/30 p-5 transition-all duration-500 hover:bg-[rgba(255,255,255,0.55)] sm:p-7"
+              className="surface p-5 sm:p-7"
             >
               <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
                 <div className="space-y-4">
@@ -115,7 +115,7 @@ export default function WorkSection({
                       </ul>
                     </div>
                     <div>
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#86868b]">Resultados verificables</p>
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#86868b]">Resultados</p>
                       <ul className="space-y-2">
                         {job.results.map((item) => (
                           <li key={item}>{item}</li>
@@ -144,7 +144,7 @@ export default function WorkSection({
 
         <button
           onClick={() => onNavigate("contact")}
-          className="flex items-center gap-2 text-sm font-medium text-[#0071e3] transition-colors hover:text-blue-600"
+          className="press flex w-fit items-center gap-2 text-sm font-medium text-[#0066cc] transition-colors hover:text-[#004f9e]"
         >
           {ctaLabel}
           <ArrowDown className="h-3 w-3" />

@@ -10,33 +10,8 @@ import ContactSection from "@/components/contact-section"
 import ProblemsSection from "@/components/problems-section"
 import OffersSection from "@/components/offers-section"
 import NavFloat, { useActiveSection } from "@/components/nav-float"
-
-const professionalServiceJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Rubén Carrión",
-  url: "https://rubencarriont.com",
-  image: "https://rubencarriont.com/img/brand/foto_perfil.png",
-  email: "mailto:rubencarrion6@gmail.com",
-  areaServed: ["Barcelona", "Badalona", "Área metropolitana de Barcelona"],
-  sameAs: "https://www.linkedin.com/in/rubencarriontorres/",
-  provider: {
-    "@type": "Person",
-    name: "Rubén Carrión",
-    jobTitle: "Diseñador gráfico y community manager",
-  },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Servicios de presencia visual y digital",
-    itemListElement: [
-      "Diseño gráfico e identidad visual",
-      "Contenido para redes sociales",
-      "Diseño y desarrollo web",
-      "SEO local y Perfil de Empresa de Google",
-      "Inteligencia artificial y automatización aplicada",
-    ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
-  },
-}
+import SiteFooter from "@/components/site-footer"
+import { homeJsonLd, serializeJsonLd } from "@/lib/seo"
 
 export default function Home() {
   const [activeSection, navigate] = useActiveSection()
@@ -45,9 +20,9 @@ export default function Home() {
     <div className="scroll-wrapper" style={{ overflow: "visible", width: "100%" }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(homeJsonLd) }}
       />
-      <main className="relative w-full bg-transparent pb-32">
+      <main className="relative w-full bg-transparent">
         <div className="noise pointer-events-none fixed inset-0 z-[999]" />
 
         <NavFloat activeSection={activeSection} onNavigate={navigate} />
@@ -63,6 +38,7 @@ export default function Home() {
         <section id="about"><AboutSection onNavigate={navigate} /></section>
         <div id="work"><WorkSection onNavigate={navigate} /></div>
         <section id="contact"><ContactSection onNavigate={navigate} /></section>
+        <SiteFooter />
       </main>
     </div>
   )

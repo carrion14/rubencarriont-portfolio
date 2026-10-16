@@ -1,60 +1,38 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import "./globals.css"
 
+import { serializeJsonLd, siteJsonLd, siteName, siteUrl } from "@/lib/seo"
+
+const title = "Diseñador gráfico en Barcelona · Redes y web | Rubén Carrión"
+const description =
+  "Diseño gráfico, gestión de redes, web y SEO local para negocios pequeños de Barcelona y Badalona. Experiencia con Kärcher España, Bluesun y CPP."
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Rubén Carrión | Diseño, redes y presencia digital en Barcelona",
+    default: title,
     template: "%s | Rubén Carrión",
   },
-  description:
-    "Ayudo a pequeños negocios de Barcelona y Badalona a mejorar su diseño, contenido para redes, web, SEO y Perfil de Empresa de Google.",
-  metadataBase: new URL("https://rubencarriont.com"),
+  description,
   alternates: {
     canonical: "/",
   },
-  applicationName: "Rubén Carrión Portfolio",
-  authors: [{ name: "Rubén Carrión", url: "https://rubencarriont.com" }],
+  applicationName: siteName,
+  authors: [{ name: "Rubén Carrión", url: siteUrl }],
   creator: "Rubén Carrión",
   publisher: "Rubén Carrión",
-  keywords: [
-    "Rubén Carrión",
-    "portfolio diseñador gráfico",
-    "diseñador gráfico Barcelona",
-    "branding",
-    "packaging",
-    "maquetación",
-    "diseño web",
-    "community manager Barcelona",
-    "contenido para redes sociales",
-    "SEO local",
-    "Google Business",
-    "retail design",
-    "Kärcher",
-    "Barcelona",
-  ],
   openGraph: {
-    title: "Rubén Carrión | Diseño, redes y presencia digital en Barcelona",
-    description:
-      "Ayudo a pequeños negocios de Barcelona y Badalona a mejorar su diseño, contenido para redes, web, SEO y Perfil de Empresa de Google.",
+    title,
+    description,
     url: "/",
-    siteName: "Rubén Carrión Portfolio",
+    siteName,
     locale: "es_ES",
     type: "website",
-    images: [
-      {
-        url: "/img/brand/foto_perfil.png",
-        width: 1200,
-        height: 1200,
-        alt: "Rubén Carrión",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rubén Carrión | Diseño, redes y presencia digital en Barcelona",
-    description:
-      "Ayudo a pequeños negocios de Barcelona y Badalona a mejorar su diseño, contenido para redes, web, SEO y Perfil de Empresa de Google.",
-    images: ["/img/brand/foto_perfil.png"],
+    title,
+    description,
   },
   robots: {
     index: true,
@@ -67,13 +45,29 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  category: "portfolio",
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+  },
+  category: "design",
+}
+
+export const viewport: Viewport = {
+  themeColor: "#f8fbff",
+  colorScheme: "light",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className="antialiased">
-      <body className="font-sans text-foreground">{children}</body>
+    <html lang="es-ES" className="antialiased">
+      <body className="font-sans text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(siteJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   )
 }

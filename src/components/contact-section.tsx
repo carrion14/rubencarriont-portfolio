@@ -1,6 +1,6 @@
 "use client"
 
-import { FileText, Globe, Mail, Send } from "lucide-react"
+import { Globe, Mail, Send } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import ScrollReveal from "@/components/ui/scroll-reveal"
 
@@ -18,9 +18,9 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
     <section className="relative flex w-full flex-col items-center justify-center px-8 py-24 sm:py-28">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:gap-14">
         <div ref={titleRef} className="reveal">
-          <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Contacto</p>
+          <p className="eyebrow">Contacto</p>
           <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-            Hablemos de <span className="editorial-accent">la prioridad de tu negocio.</span>
+            Cuéntame qué está fallando. <span className="editorial-accent">Te contesto yo.</span>
           </h2>
         </div>
 
@@ -33,7 +33,7 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
               textClassName="text-base leading-relaxed text-[#6e6e73] sm:text-lg"
               wordAnimationEnd="top 45%"
             >
-              Cuéntame qué parte de tu presencia digital quieres mejorar. Te responderé con las preguntas necesarias y un siguiente paso claro.
+              Escríbeme con lo que tengas, aunque no sepas bien qué necesitas. Normalmente respondo con un par de preguntas y una idea de por dónde empezar.
             </ScrollReveal>
 
             <div className="space-y-3">
@@ -53,10 +53,6 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
                 <Globe className="h-5 w-5 shrink-0 text-[#0071e3]" />
                 LinkedIn /rubencarriontorres
               </a>
-              <span aria-disabled="true" title="Catálogo pendiente de incorporar" className="flex cursor-not-allowed items-center gap-3 rounded-2xl bg-[rgba(255,255,255,0.35)] p-4 text-sm font-medium text-[#86868b] opacity-70">
-                <FileText className="h-5 w-5 shrink-0 text-[#0071e3]" />
-                Ver catálogo de servicios
-              </span>
             </div>
           </div>
 
@@ -64,22 +60,24 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
             <input type="hidden" name="_subject" value="Consulta de negocio desde rubencarriont.com" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
+            {/* Honeypot antispam: FormSubmit descarta los envíos que rellenan este campo */}
+            <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
             <input type="hidden" name="_next" value="https://rubencarriont.com/?contact=sent" />
             <label className="sr-only" htmlFor="name">Nombre</label>
-            <input id="name" name="name" type="text" placeholder="Nombre" autoComplete="name" required className={inputClass} />
+            <input id="name" name="name" type="text" placeholder="Nombre" autoComplete="name" required maxLength={120} className={inputClass} />
             <label className="sr-only" htmlFor="company">Negocio o empresa</label>
-            <input id="company" name="company" type="text" placeholder="Negocio o empresa" autoComplete="organization" required className={inputClass} />
+            <input id="company" name="company" type="text" placeholder="Negocio o empresa" autoComplete="organization" required maxLength={160} className={inputClass} />
             <label className="sr-only" htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Email" autoComplete="email" required className={inputClass} />
+            <input id="email" name="email" type="email" placeholder="Email" autoComplete="email" required maxLength={254} className={inputClass} />
             <label className="text-xs font-semibold text-[#6e6e73]" htmlFor="improvement">¿Qué quieres mejorar?</label>
             <select id="improvement" name="improvement" required className={inputClass} defaultValue="">
               <option value="" disabled>Selecciona una opción</option>
               <option>Redes sociales</option><option>Web</option><option>Google Business</option><option>Imagen visual</option><option>No lo tengo claro</option>
             </select>
             <label className="sr-only" htmlFor="explanation">Breve explicación</label>
-            <textarea id="explanation" name="explanation" placeholder="Breve explicación" rows={4} required className={inputClass} />
+            <textarea id="explanation" name="explanation" placeholder="¿Qué está pasando? Con dos líneas me basta" rows={4} required maxLength={3000} className={inputClass} />
             <label className="sr-only" htmlFor="timeline">Plazo aproximado</label>
-            <input id="timeline" name="timeline" type="text" placeholder="Plazo aproximado" required className={inputClass} />
+            <input id="timeline" name="timeline" type="text" placeholder="Plazo aproximado" required maxLength={120} className={inputClass} />
             <label className="flex items-start gap-3 rounded-2xl bg-white/35 p-4 text-xs leading-relaxed text-[#6e6e73]">
               <input name="privacy" type="checkbox" required className="mt-0.5 h-4 w-4 rounded border-[#c7c7cc] accent-[#0071e3]" />
               Acepto que Rubén Carrión use estos datos solo para responder a esta consulta. No se enviarán newsletters ni comunicaciones comerciales automáticas.
@@ -87,7 +85,7 @@ export default function ContactSection({ onNavigate }: { onNavigate: (section: s
 
             <button
               type="submit"
-              className="flex items-center justify-center gap-2 rounded-2xl bg-[#0071e3] px-6 py-3.5 text-sm font-medium text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95"
+              className="press flex items-center justify-center gap-2 rounded-2xl bg-[#0071e3] px-6 py-3.5 text-sm font-medium text-white shadow-lg shadow-[#0071e3]/20 transition-colors hover:bg-[#0077ed]"
             >
               Cuéntame qué necesitas
               <Send className="h-4 w-4" />
