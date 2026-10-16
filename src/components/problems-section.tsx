@@ -2,6 +2,7 @@
 
 import { ImageIcon, MapPin, Share2 } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import { RevealWords } from "@/components/motion"
 
 const problems = [
   {
@@ -33,11 +34,11 @@ export default function ProblemsSection() {
       <div className="container-wide">
         <div ref={titleRef} className="reveal mx-auto max-w-[820px] text-center">
           <p className="kicker">Cómo puedo ayudarte</p>
-          <h2 className="headline mt-3">Lo que suelo encontrar. <span className="headline-muted">Y cómo lo arreglo.</span></h2>
+          <h2 className="headline mt-3"><RevealWords text="Lo que suelo encontrar." /> <RevealWords text="Y cómo lo arreglo." className="headline-muted" delay={0.3} /></h2>
         </div>
-        <div ref={cardsRef} className="reveal reveal-delay-1 mt-14 grid gap-5 md:mt-20 md:grid-cols-3">
+        <div ref={cardsRef} className="reveal-stagger mt-14 grid gap-5 md:mt-20 md:grid-cols-3">
           {problems.map(({ icon: Icon, title, problem, result }) => (
-            <article key={title} className="tile flex flex-col p-8 md:p-10">
+            <article key={title} className="tile tile-lift flex flex-col p-8 md:p-10">
               <Icon className="h-8 w-8 text-[#0071e3]" strokeWidth={1.6} />
               <h3 className="mt-6 text-[1.75rem] font-bold leading-tight tracking-[-0.025em] text-[#1d1d1f]">{title}</h3>
               <p className="mt-4 text-[1.0625rem] leading-relaxed text-[#6e6e73]">{problem}</p>

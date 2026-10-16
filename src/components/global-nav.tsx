@@ -12,12 +12,14 @@ export default function GlobalNav({
   ctaId = "contact",
   ctaLabel = "Hablemos",
   homeHref = "/",
+  darkIds = [],
 }: {
   links: NavLink[]
   activeId?: string
   ctaId?: string
   ctaLabel?: string
   homeHref?: string
+  darkIds?: string[]
 }) {
   const [open, setOpen] = useState(false)
 
@@ -31,9 +33,9 @@ export default function GlobalNav({
   }, [open])
 
   return (
-    <header className="global-nav">
+    <header className={`global-nav ${activeId && darkIds.includes(activeId) ? "global-nav-dark" : ""}`}>
       <nav aria-label="Navegación principal" className="mx-auto flex h-full max-w-[1024px] items-center justify-between gap-6 px-5">
-        <Link href={homeHref} className="text-[0.9375rem] font-semibold tracking-tight text-[#1d1d1f]">
+        <Link href={homeHref} className="global-nav-brand text-[0.9375rem] font-semibold tracking-tight">
           Rubén Carrión
         </Link>
 
@@ -57,7 +59,7 @@ export default function GlobalNav({
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#1d1d1f] md:hidden"
+            className="global-nav-brand flex h-9 w-9 items-center justify-center rounded-full md:hidden"
           >
             {open ? <X className="h-[18px] w-[18px]" /> : <Menu className="h-[18px] w-[18px]" />}
           </button>

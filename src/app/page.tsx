@@ -30,7 +30,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(homeJsonLd) }}
       />
-      <GlobalNav links={navLinks} activeId={activeSection} />
+      <GlobalNav links={navLinks} activeId={activeSection} darkIds={["process"]} />
       <main className="relative w-full">
         <section id="hero"><HeroSection onNavigate={navigate} /></section>
         <ProblemsSection />

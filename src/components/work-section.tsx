@@ -83,7 +83,7 @@ export default function WorkSection({
           </a>
         </div>
 
-        <div ref={listRef} className="reveal reveal-delay-1 mt-14 border-t border-[#d2d2d7] md:mt-20">
+        <div ref={listRef} className="reveal-stagger mt-14 border-t border-[#d2d2d7] md:mt-20">
           {jobs.map((job) => (
             <article key={`${job.company}-${job.period}`} className="grid gap-6 border-b border-[#d2d2d7] py-10 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-12">
               <div>
