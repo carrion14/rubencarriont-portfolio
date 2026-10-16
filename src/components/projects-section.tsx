@@ -412,10 +412,10 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
         <div ref={titleRef} className="reveal flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Portfolio</p>
+            <p className="eyebrow">Portfolio</p>
             <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Proyectos</h2>
             <ScrollReveal baseOpacity={0.45} baseRotation={0.8} blurStrength={1.2} containerClassName="mt-4 max-w-2xl" textClassName="text-base leading-relaxed text-[#86868b] sm:text-lg" wordAnimationEnd="top 45%">
-              Proyectos reales organizados por contenido y redes, diseño, web e IA aplicada. Puedes abrir cada caso para ver sus piezas y el contexto del trabajo.
+              Trabajo real para Kärcher España, Berbel Tattoo y otros clientes, más algún proyecto propio. Abre cualquiera para ver las piezas y el contexto.
             </ScrollReveal>
           </div>
           <button onClick={() => onNavigate("contact")} className="shrink-0 rounded-full bg-[#0071e3] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95">

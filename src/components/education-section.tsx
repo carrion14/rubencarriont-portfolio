@@ -33,7 +33,7 @@ export default function EducationSection({ onNavigate }: { onNavigate: (section:
     <section className="relative flex w-full flex-col items-center justify-center px-8 py-24 sm:py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:gap-12">
         <div ref={titleRef} className="reveal">
-          <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Formación</p>
+          <p className="eyebrow">Formación</p>
           <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
             <GraduationCap className="mr-2 inline-block h-7 w-7 text-[#0071e3] align-middle" />
             Educación

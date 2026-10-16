@@ -28,27 +28,27 @@ export default function AboutSection({ onNavigate }: { onNavigate: (section: str
 
         <div ref={contentRef} className="reveal reveal-delay-1 flex max-w-xl flex-col gap-6">
           <div>
-            <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Sobre mí</p>
+            <p className="eyebrow">Sobre mí</p>
             <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-              Un colaborador versátil <span className="editorial-accent">con visión global.</span>
+              Estudié cine. <span className="editorial-accent">Luego diseño. Ahora también programo.</span>
             </h2>
           </div>
 
           <div className="space-y-5 text-base leading-relaxed text-[#6e6e73] sm:text-lg">
             <p>
-              Soy Rubén Carrión, <strong className="key-phrase">diseñador gráfico y community manager</strong>. Ayudo a pequeños negocios a mejorar su presencia visual y digital conectando diseño, contenido, web y marketing, con la inteligencia artificial como herramienta de apoyo.
+              Soy Rubén Carrión, <strong className="key-phrase">diseñador gráfico y community manager en Barcelona</strong>. Vengo del audiovisual, me formé en diseño en l&apos;Escola del Treball y en 2025 hice el bootcamp front-end de Barcelona Activa. Por eso puedo llevar el vídeo, la imagen y la web de un mismo negocio sin pasarle la pelota a nadie.
             </p>
             <p>
-              He trabajado en proyectos reales de branding, packaging, campañas, contenido y web para <strong className="key-phrase">Kärcher España, Bluesun y CPP Chemical Group</strong>. Esa experiencia me permite combinar creatividad, ejecución y criterio comercial.
+              He pasado por <strong className="key-phrase">Kärcher España, Bluesun y CPP Chemical Group</strong>: campañas, retail, packaging, etiquetas que tenían que cumplir normativa europea. Ahí aprendí que un diseño precioso que no llega a imprenta a tiempo sirve de poco.
             </p>
             <p>
-              Primero detecto qué necesita el negocio y después preparo <strong className="key-phrase">una solución concreta, con prioridades y límites claros</strong>, sin incluir servicios innecesarios.
+              Cuando alguien me escribe, lo primero que hago es preguntar.
             </p>
           </div>
 
           <button
             onClick={() => onNavigate("work")}
-            className="mt-2 flex items-center gap-2 text-sm font-medium text-[#0071e3] transition-colors hover:text-blue-600 active:text-[#005bb5]"
+            className="press mt-2 flex w-fit items-center gap-2 text-sm font-medium text-[#0066cc] transition-colors hover:text-[#004f9e]"
           >
             Ver experiencia
             <ArrowDown className="h-3 w-3" />

@@ -1,24 +1,38 @@
 import type { Metadata } from "next"
 
+import { portfolioJsonLd, serializeJsonLd } from "@/lib/seo"
+
+const title = "Portfolio de diseño gráfico, campañas y web"
+const description =
+  "Proyectos de Rubén Carrión para Kärcher España, Bluesun, Berbel Tattoo y otros: campañas, retail, packaging, editorial, redes sociales y web."
+
 export const metadata: Metadata = {
-  title: "Portfolio profesional",
-  description:
-    "Portfolio profesional de Rubén Carrión: diseño gráfico, contenido, web, experiencia y formación.",
+  title,
+  description,
   alternates: { canonical: "/portfolio" },
   openGraph: {
-    title: "Portfolio profesional | Rubén Carrión",
-    description: "Proyectos, experiencia y formación de Rubén Carrión.",
+    title: `${title} | Rubén Carrión`,
+    description,
     url: "/portfolio",
-    images: [{ url: "/img/brand/foto_perfil.png", width: 1200, height: 1200, alt: "Rubén Carrión" }],
+    type: "profile",
+    firstName: "Rubén",
+    lastName: "Carrión",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio profesional | Rubén Carrión",
-    description: "Proyectos, experiencia y formación de Rubén Carrión.",
-    images: ["/img/brand/foto_perfil.png"],
+    title: `${title} | Rubén Carrión`,
+    description,
   },
 }
 
 export default function PortfolioLayout({ children }: { children: React.ReactNode }) {
-  return children
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(portfolioJsonLd) }}
+      />
+      {children}
+    </>
+  )
 }

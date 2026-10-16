@@ -48,7 +48,7 @@ export default function SkillsSection({ onNavigate }: { onNavigate: (section: st
     <section className="relative flex w-full flex-col items-center justify-center px-8 py-24 sm:py-28">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:gap-14">
         <div ref={titleRef} className="reveal">
-          <p className="text-xs font-medium uppercase tracking-widest text-[#0071e3]">Herramientas</p>
+          <p className="eyebrow">Herramientas</p>
           <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
             Skills
           </h2>
