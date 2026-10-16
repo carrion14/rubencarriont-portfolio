@@ -9,24 +9,29 @@ import AboutSection from "@/components/about-section"
 import ContactSection from "@/components/contact-section"
 import ProblemsSection from "@/components/problems-section"
 import OffersSection from "@/components/offers-section"
-import NavFloat, { useActiveSection } from "@/components/nav-float"
+import GlobalNav from "@/components/global-nav"
+import { useActiveSection } from "@/hooks/use-active-section"
 import SiteFooter from "@/components/site-footer"
 import { homeJsonLd, serializeJsonLd } from "@/lib/seo"
+
+const navLinks = [
+  { id: "services", label: "Servicios" },
+  { id: "projects", label: "Proyectos" },
+  { id: "process", label: "Proceso" },
+  { id: "about", label: "Sobre mí" },
+]
 
 export default function Home() {
   const [activeSection, navigate] = useActiveSection()
 
   return (
-    <div className="scroll-wrapper" style={{ overflow: "visible", width: "100%" }}>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(homeJsonLd) }}
       />
-      <main className="relative w-full bg-transparent">
-        <div className="noise pointer-events-none fixed inset-0 z-[999]" />
-
-        <NavFloat activeSection={activeSection} onNavigate={navigate} />
-
+      <GlobalNav links={navLinks} activeId={activeSection} />
+      <main className="relative w-full">
         <section id="hero"><HeroSection onNavigate={navigate} /></section>
         <ProblemsSection />
         <section id="services">
@@ -36,10 +41,10 @@ export default function Home() {
         <section id="projects"><ProjectsSection onNavigate={navigate} /></section>
         <section id="process"><CollaborationSection /></section>
         <section id="about"><AboutSection onNavigate={navigate} /></section>
-        <div id="work"><WorkSection onNavigate={navigate} /></div>
+        <section id="work"><WorkSection onNavigate={navigate} /></section>
         <section id="contact"><ContactSection onNavigate={navigate} /></section>
-        <SiteFooter />
       </main>
-    </div>
+      <SiteFooter />
+    </>
   )
 }

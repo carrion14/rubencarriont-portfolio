@@ -12,25 +12,25 @@ const processSteps = [
 export default function CollaborationSection() {
   const processRef = useScrollReveal<HTMLDivElement>()
   return (
-    <section className="relative px-6 py-20 sm:px-8 sm:py-24">
-      <div ref={processRef} className="reveal mx-auto flex max-w-6xl flex-col gap-10">
-        <div className="max-w-3xl">
-          <p className="eyebrow">Proceso</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Cómo trabajamos. <span className="editorial-accent">Sin sorpresas en la factura.</span></h2>
-          <p className="mt-4 text-base leading-relaxed text-[#6e6e73] sm:text-lg">Primero entiendo el problema. <strong className="key-phrase">Alcance, plazos y precio quedan por escrito antes de empezar.</strong></p>
+    <section className="band band-black">
+      <div ref={processRef} className="reveal container-wide">
+        <div className="mx-auto max-w-[820px] text-center">
+          <p className="kicker">Proceso</p>
+          <h2 className="headline mt-3 text-[#f5f5f7]">Cómo trabajamos. <span className="headline-muted">Sin sorpresas en la factura.</span></h2>
+          <p className="lead mx-auto mt-6 max-w-[640px]">Primero entiendo el problema. Alcance, plazos y precio quedan por escrito antes de empezar.</p>
         </div>
-        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-16 grid gap-px overflow-hidden rounded-[1.75rem] bg-[#333336] sm:grid-cols-2 md:mt-20 lg:grid-cols-4">
           {processSteps.map(([title, text], index) => (
-            <li key={title} className="surface relative p-6 lg:min-h-64">
-              <span className="text-3xl font-semibold tracking-tight text-[#0071e3]/25 tabular-nums">{String(index + 1).padStart(2, "0")}</span>
-              <h3 className="mt-4 text-lg font-semibold text-[#1d1d1f]">{title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#6e6e73]">{text}</p>
+            <li key={title} className="bg-[#1d1d1f] p-8 md:p-9">
+              <span className="block text-[3.5rem] font-bold leading-none tracking-[-0.04em] text-[#2997ff] tabular-nums">{String(index + 1).padStart(2, "0")}</span>
+              <h3 className="mt-8 text-[1.375rem] font-bold tracking-[-0.02em] text-[#f5f5f7]">{title}</h3>
+              <p className="mt-3 text-[1.0625rem] leading-relaxed text-[#a1a1a6]">{text}</p>
             </li>
           ))}
         </ol>
-        <aside className="rounded-2xl border border-[#0071e3]/15 bg-[#eef7ff]/75 px-5 py-4 text-sm leading-relaxed text-[#5f6670] sm:px-6">
-          <strong className="text-[#1d1d1f]">Lo que no está en la propuesta se presupuesta aparte.</strong> Cada una deja escrito qué se entrega, cuántas revisiones entran y quién hace qué.
-        </aside>
+        <p className="mx-auto mt-12 max-w-[640px] text-center text-[1.0625rem] leading-relaxed text-[#a1a1a6]">
+          <strong className="font-semibold text-[#f5f5f7]">Lo que no está en la propuesta se presupuesta aparte.</strong> Cada una deja escrito qué se entrega, cuántas revisiones entran y quién hace qué.
+        </p>
       </div>
     </section>
   )

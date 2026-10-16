@@ -6,7 +6,6 @@ import { flushSync } from "react-dom"
 import { Book, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react"
 import { projects, type Project } from "@/lib/projects-data"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-import ScrollReveal from "@/components/ui/scroll-reveal"
 
 const filters = [
   { key: "all", label: "Todos" },
@@ -258,14 +257,14 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") onClick()
       }}
-      className="group relative cursor-pointer overflow-hidden rounded-2xl text-left transition-all duration-500 hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#0071e3]/35"
+      className="press group relative cursor-pointer text-left focus:outline-none"
     >
-      <div className="overflow-hidden rounded-2xl bg-[rgba(255,255,255,0.4)] p-1 transition-all duration-500 group-hover:bg-[rgba(255,255,255,0.6)]">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-[rgba(0,0,0,0.02)]">
+      <div>
+        <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-[#f5f5f7] transition-shadow duration-500 group-hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] group-focus-visible:ring-2 group-focus-visible:ring-[#0071e3]">
           <ProjectMedia
             src={project.images[0]}
             alt={`Miniatura del proyecto ${project.title}`}
-            className="h-full w-full object-cover transition-all duration-700 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 260px"
           />
@@ -277,15 +276,10 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
         </div>
       </div>
 
-      <div className="mt-3 px-1">
-        <p className="text-xs font-medium text-[#0071e3]">{getProjectContext(project)} · {project.year}</p>
-        <h3 className="text-sm font-semibold text-[#1d1d1f]">{project.title}</h3>
-        <div className="mt-2 flex flex-wrap gap-1.5">
-          <span className="rounded-full bg-[#0071e3]/10 px-2 py-0.5 text-[11px] font-medium text-[#0071e3]">{mainCategory}</span>
-          {secondaryTags.map((tag) => (
-            <span key={tag} className="rounded-full bg-[rgba(0,0,0,0.04)] px-2 py-0.5 text-[11px] font-medium text-[#6e6e73]">{tag}</span>
-          ))}
-        </div>
+      <div className="mt-4">
+        <p className="text-xs font-semibold text-[#bf4800]">{mainCategory}</p>
+        <h3 className="mt-1 text-[1.0625rem] font-semibold leading-snug tracking-[-0.015em] text-[#1d1d1f]">{project.title}</h3>
+        <p className="mt-1 text-sm text-[#6e6e73]">{getProjectContext(project)} · {project.year}{secondaryTags.length > 0 ? ` · ${secondaryTags[0]}` : ""}</p>
       </div>
     </div>
   )
@@ -399,6 +393,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 }
 
 export default function ProjectsSection({ onNavigate }: { onNavigate: (section: string) => void }) {
+  void onNavigate
   const titleRef = useScrollReveal<HTMLDivElement>()
   const gridRef = useScrollReveal<HTMLDivElement>()
   const [selected, setSelected] = useState<Project | null>(null)
@@ -408,22 +403,17 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
   const visibleProjects = showAll ? filtered : filtered.slice(0, 8)
 
   return (
-    <section className="relative flex w-full flex-col items-center justify-center px-8 py-24 sm:py-28">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
-        <div ref={titleRef} className="reveal flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="eyebrow">Portfolio</p>
-            <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Proyectos</h2>
-            <ScrollReveal baseOpacity={0.45} baseRotation={0.8} blurStrength={1.2} containerClassName="mt-4 max-w-2xl" textClassName="text-base leading-relaxed text-[#86868b] sm:text-lg" wordAnimationEnd="top 45%">
-              Trabajo real para Kärcher España, Berbel Tattoo y otros clientes, más algún proyecto propio. Abre cualquiera para ver las piezas y el contexto.
-            </ScrollReveal>
-          </div>
-          <button onClick={() => onNavigate("contact")} className="shrink-0 rounded-full bg-[#0071e3] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95">
-            Hablemos
-          </button>
+    <section className="band band-white">
+      <div className="container-wide flex flex-col gap-10">
+        <div ref={titleRef} className="reveal mx-auto max-w-[820px] text-center">
+          <p className="kicker">Portfolio</p>
+          <h2 className="headline mt-3">Proyectos</h2>
+          <p className="lead mx-auto mt-6 max-w-[640px]">
+            Trabajo real para Kärcher España, Berbel Tattoo y otros clientes, más algún proyecto propio. Abre cualquiera para ver las piezas y el contexto.
+          </p>
         </div>
 
-        <div ref={gridRef} className="reveal reveal-delay-1 flex flex-wrap gap-2">
+        <div ref={gridRef} className="reveal reveal-delay-1 mx-auto flex max-w-full gap-1 overflow-x-auto rounded-full bg-[#f5f5f7] p-1" role="group" aria-label="Filtrar proyectos">
           {filters.map((filter) => (
             <button
               key={filter.key}
@@ -432,10 +422,10 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
                 setShowAll(false)
               }}
               aria-pressed={activeFilter === filter.key}
-              className={`rounded-full px-5 py-2 text-xs font-medium transition-all focus:outline-none focus:ring-2 focus:ring-[#0071e3]/30 ${
+              className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all sm:px-5 ${
                 activeFilter === filter.key
-                  ? "bg-[#0071e3] text-white shadow-sm"
-                  : "bg-[rgba(0,0,0,0.04)] text-[#6e6e73] hover:bg-[rgba(0,0,0,0.08)]"
+                  ? "bg-white text-[#1d1d1f] shadow-[0_1px_4px_rgba(0,0,0,0.12)]"
+                  : "text-[#6e6e73] hover:text-[#1d1d1f]"
               }`}
             >
               {filter.label}
@@ -443,7 +433,7 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
           {filtered.length > 0 ? (
             visibleProjects.map((project) => <ProjectCard key={project.id} project={project} onClick={() => setSelected(project)} />)
           ) : (
@@ -458,7 +448,7 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
             <button
               type="button"
               onClick={() => setShowAll((current) => !current)}
-              className="rounded-full bg-[rgba(0,0,0,0.05)] px-6 py-3 text-sm font-semibold text-[#1d1d1f] transition-all hover:bg-[rgba(0,0,0,0.08)] active:scale-95"
+              className="btn-apple btn-outline"
             >
               {showAll ? "Ver menos" : `Ver más proyectos (${filtered.length - visibleProjects.length})`}
             </button>

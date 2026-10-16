@@ -2,121 +2,87 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowDown, ArrowRight, ExternalLink, Mail } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 
 import EducationSection from "@/components/education-section"
+import GlobalNav from "@/components/global-nav"
 import ProjectsSection from "@/components/projects-section"
-import WorkSection from "@/components/work-section"
-import SideRays from "@/components/ui/side-rays"
 import SiteFooter from "@/components/site-footer"
+import WorkSection from "@/components/work-section"
+import { useActiveSection } from "@/hooks/use-active-section"
 
-const navigation = [
-  ["projects", "Proyectos"],
-  ["experience", "Experiencia"],
-  ["education", "Formación"],
-  ["about", "Sobre mí"],
-] as const
+const navLinks = [
+  { id: "projects", label: "Proyectos" },
+  { id: "experience", label: "Experiencia" },
+  { id: "education", label: "Formación" },
+  { id: "about", label: "Sobre mí" },
+]
 
 export default function ProfessionalPortfolio() {
-  const navigate = (id: string) => {
-    const element = document.getElementById(id)
-    if (!element) return
-    const y = element.getBoundingClientRect().top + window.scrollY - 16
-    window.scrollTo({ top: y, behavior: "smooth" })
-  }
+  const [activeSection, navigate] = useActiveSection()
 
   return (
-    <main className="relative w-full overflow-hidden bg-transparent">
-      <div className="noise pointer-events-none fixed inset-0 z-[999]" />
-
-      <header className="fixed left-5 right-5 top-4 z-50 sm:left-6 sm:right-6">
-        <div className="liquid-pill mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-2.5 shadow-[0_16px_40px_rgba(0,113,227,0.09)] sm:px-6">
-          <button onClick={() => navigate("top")} className="text-sm font-semibold text-[#1d1d1f]">
-            Rubén Carrión
-          </button>
-          <nav className="hidden items-center gap-5 md:flex" aria-label="Navegación del portfolio">
-            {navigation.map(([id, label]) => (
-              <button key={id} onClick={() => navigate(id)} className="text-xs font-medium text-[#6e6e73] transition-colors hover:text-[#0071e3]">
-                {label}
-              </button>
-            ))}
-          </nav>
-          <button onClick={() => navigate("contact")} className="rounded-full bg-[#0071e3] px-4 py-2 text-xs font-semibold text-white transition-all hover:bg-[#0077ed] active:scale-95">
-            Contacto
-          </button>
-        </div>
-      </header>
-
-      <section id="top" className="portfolio-hero relative flex min-h-[96svh] w-full items-center justify-center overflow-hidden px-8 pb-20 pt-40 sm:px-10 sm:pt-36 lg:px-8 lg:pt-28">
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#f8fbff_0%,#eef7ff_48%,#ffffff_100%)]" />
-        <SideRays className="absolute inset-0 z-[1]" speed={2.1} rayColor1="#005CFF" rayColor2="#00C8FF" intensity={1.55} spread={2.1} origin="top-right" tilt={-7} saturation={1.25} blend={0.48} falloff={1.65} opacity={0.65} />
-        <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.45),rgba(255,255,255,0.08)_36%,rgba(255,255,255,0.8)_78%)]" />
-
-        <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
-          <div className="order-2 max-w-4xl lg:order-1">
-            <h1 className="text-5xl font-semibold leading-[0.96] tracking-tighter text-[#1d1d1f] sm:text-7xl md:text-8xl">
-              <span className="liquid-pill mb-6 flex w-fit px-4 py-2 text-xs font-medium leading-normal tracking-normal text-[#0066cc]">
-                Portfolio de Rubén Carrión · Diseñador gráfico en Barcelona
+    <>
+      <GlobalNav links={navLinks} activeId={activeSection} ctaLabel="Contacto" />
+      <main className="relative w-full">
+        <section id="top" className="band band-white pb-20 pt-32 md:pb-28 md:pt-40">
+          <div className="container-apple flex flex-col items-center text-center">
+            <Image src="/img/brand/ruben-carrion-retrato.jpg" alt="Rubén Carrión, diseñador gráfico en Barcelona" width={72} height={72} priority className="mb-5 h-16 w-16 rounded-full object-cover md:h-[72px] md:w-[72px]" />
+            <h1>
+              <span className="kicker mb-3 text-[#6e6e73]">Portfolio de Rubén Carrión · Diseñador gráfico en Barcelona</span>
+              <span className="headline-hero block">
+                Diseño que sale de la pantalla <span className="hero-name">y llega a la tienda.</span>
               </span>
-              Diseño que sale de la pantalla <span className="hero-name">y llega a la tienda.</span>
             </h1>
-            <p className="mt-7 max-w-2xl text-base leading-relaxed text-[#515154] sm:text-xl">
-              He hecho campañas para la web y el retail de <strong className="key-phrase">Kärcher España</strong>, más de 60 etiquetas para Bluesun y la web de Berbel Tattoo, programada desde cero. Esto es una selección.
+            <p className="lead mt-6 max-w-[640px]">
+              He hecho campañas para la web y el retail de Kärcher España, más de 60 etiquetas para Bluesun y la web de Berbel Tattoo, programada desde cero. Esto es una selección.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <button onClick={() => navigate("projects")} className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0071e3] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95">
-                Ver proyectos <ArrowDown className="h-4 w-4" />
-              </button>
-              <button onClick={() => navigate("experience")} className="inline-flex items-center justify-center gap-2 rounded-full bg-white/55 px-6 py-3.5 text-sm font-semibold text-[#1d1d1f] backdrop-blur-xl transition-all hover:bg-white/75 active:scale-95">
-                Ver experiencia <ArrowRight className="h-4 w-4" />
+            <div className="mt-9 flex flex-col items-center gap-5 sm:flex-row sm:gap-7">
+              <button type="button" onClick={() => navigate("projects")} className="btn-apple btn-primary">Ver proyectos</button>
+              <button type="button" onClick={() => navigate("experience")} className="link-apple">
+                Ver experiencia <ChevronRight className="h-4 w-4" />
               </button>
             </div>
           </div>
+        </section>
 
-          <div className="order-1 mx-auto overflow-hidden rounded-full border border-white/70 bg-white/45 p-1.5 shadow-[0_18px_50px_rgba(0,113,227,0.12)] backdrop-blur-2xl lg:order-2 lg:mx-0">
-            <Image src="/img/brand/foto_perfil.png" alt="Retrato de Rubén Carrión" width={240} height={240} priority sizes="(max-width: 1024px) 160px, 240px" className="h-36 w-36 rounded-full object-cover sm:h-40 sm:w-40 lg:h-60 lg:w-60" />
-          </div>
-        </div>
-      </section>
+        <section id="projects"><ProjectsSection onNavigate={navigate} /></section>
+        <section id="experience"><WorkSection onNavigate={navigate} ctaLabel="Hablemos de una oportunidad" /></section>
+        <section id="education"><EducationSection onNavigate={navigate} /></section>
 
-      <section id="projects"><ProjectsSection onNavigate={navigate} /></section>
-      <section id="experience"><WorkSection onNavigate={navigate} ctaLabel="Hablemos de una oportunidad" /></section>
-      <section id="education"><EducationSection onNavigate={navigate} /></section>
-
-      <section id="about" className="relative px-6 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 rounded-[2rem] border border-white/60 bg-white/40 p-6 shadow-[0_24px_70px_rgba(29,29,31,0.06)] backdrop-blur-2xl sm:p-10 lg:grid-cols-[auto_1fr] lg:gap-16">
-          <Image src="/img/brand/foto_cara.png" alt="Rubén Carrión" width={340} height={420} sizes="(max-width: 1024px) 80vw, 340px" className="mx-auto max-h-[27rem] w-full max-w-sm rounded-3xl object-cover" />
-          <div>
-            <p className="eyebrow">Sobre mí</p>
-            <h2 className="mt-2 text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-              Un perfil mixto, <span className="editorial-accent">y a propósito.</span>
-            </h2>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-[#6e6e73] sm:text-lg">
-              <p>Estudié cine y producción audiovisual, después <strong className="key-phrase">diseño gráfico en l&apos;Escola del Treball</strong>, y en 2025 me metí en un bootcamp de front-end. Cada etapa me dejó una herramienta que sigo usando.</p>
-              <p>En <strong className="key-phrase">Kärcher España, Bluesun y CPP Chemical Group</strong> he tocado casi de todo: banners para Amazon, un stand de feria, una revista de producto, etiquetado con normativa europea. Me adapto rápido a marcas con manual estricto.</p>
-              <p>Lo que más disfruto es el último tramo, cuando una pieza pasa de idea a archivo listo para imprenta o para publicar.</p>
+        <section id="about" className="band band-white">
+          <div className="container-wide grid items-center gap-12 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] md:gap-20">
+            <div className="tile relative mx-auto aspect-[4/5] w-full max-w-[440px]">
+              <Image src="/img/brand/foto_cara.png" alt="Retrato de Rubén Carrión" fill sizes="(max-width: 768px) 90vw, 440px" className="object-cover" />
+            </div>
+            <div className="max-w-[560px]">
+              <p className="kicker">Sobre mí</p>
+              <h2 className="headline mt-3">Un perfil mixto, <span className="headline-muted">y a propósito.</span></h2>
+              <div className="mt-8 space-y-5 text-[1.1875rem] leading-relaxed text-[#6e6e73]">
+                <p>Estudié cine y producción audiovisual, después <strong className="font-semibold text-[#1d1d1f]">diseño gráfico en l&apos;Escola del Treball</strong>, y en 2025 me metí en un bootcamp de front-end. Cada etapa me dejó una herramienta que sigo usando.</p>
+                <p>En <strong className="font-semibold text-[#1d1d1f]">Kärcher España, Bluesun y CPP Chemical Group</strong> he tocado casi de todo: banners para Amazon, un stand de feria, una revista de producto, etiquetado con normativa europea. Me adapto rápido a marcas con manual estricto.</p>
+                <p>Lo que más disfruto es el último tramo, cuando una pieza pasa de idea a archivo listo para imprenta o para publicar.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="contact" className="relative px-6 py-20 text-center sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-3xl rounded-[2rem] border border-[#0071e3]/15 bg-[#eef7ff]/75 p-8 sm:p-12">
-          <p className="eyebrow">Contacto</p>
-          <h2 className="mt-2 text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">¿Hablamos?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#6e6e73]">Disponible para oportunidades profesionales, colaboraciones y proyectos en los que diseño y ejecución tengan el mismo peso.</p>
-          <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href="mailto:rubencarrion6@gmail.com" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0071e3] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#0071e3]/20 transition-all hover:bg-[#0077ed] active:scale-95">
-              <Mail className="h-4 w-4" /> rubencarrion6@gmail.com
-            </a>
-            <a href="https://www.linkedin.com/in/rubencarriontorres/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-white/70 px-6 py-3.5 text-sm font-semibold text-[#1d1d1f] transition-all hover:bg-white active:scale-95">
-              LinkedIn <ExternalLink className="h-4 w-4" />
-            </a>
+        <section id="contact" className="band band-black text-center">
+          <div className="container-apple">
+            <p className="kicker">Contacto</p>
+            <h2 className="headline mt-3 text-[#f5f5f7]">¿Hablamos?</h2>
+            <p className="lead mx-auto mt-6 max-w-[560px]">Disponible para oportunidades profesionales, colaboraciones y proyectos en los que diseño y ejecución tengan el mismo peso.</p>
+            <div className="mt-9 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-7">
+              <a href="mailto:rubencarrion6@gmail.com" className="btn-apple btn-primary">Escríbeme</a>
+              <a href="https://www.linkedin.com/in/rubencarriontorres/" target="_blank" rel="noopener noreferrer" className="link-apple">
+                LinkedIn <ChevronRight className="h-4 w-4" />
+              </a>
+            </div>
+            <Link href="/" className="link-apple mt-8 text-sm">Ver servicios para negocios</Link>
           </div>
-          <Link href="/" className="mt-7 inline-block text-xs font-medium text-[#86868b] transition-colors hover:text-[#0071e3]">Ver web completa</Link>
-        </div>
-      </section>
+        </section>
+      </main>
       <SiteFooter variant="portfolio" />
-    </main>
+    </>
   )
 }

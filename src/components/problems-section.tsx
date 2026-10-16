@@ -29,22 +29,19 @@ export default function ProblemsSection() {
   const cardsRef = useScrollReveal<HTMLDivElement>()
 
   return (
-    <section className="relative px-8 py-20 sm:py-24">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
-        <div ref={titleRef} className="reveal max-w-3xl">
-          <p className="eyebrow">Cómo puedo ayudarte</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">Lo que suelo encontrar. <span className="editorial-accent">Y cómo lo arreglo.</span></h2>
+    <section className="band band-gray">
+      <div className="container-wide">
+        <div ref={titleRef} className="reveal mx-auto max-w-[820px] text-center">
+          <p className="kicker">Cómo puedo ayudarte</p>
+          <h2 className="headline mt-3">Lo que suelo encontrar. <span className="headline-muted">Y cómo lo arreglo.</span></h2>
         </div>
-        <div ref={cardsRef} className="reveal reveal-delay-1 grid gap-4 md:grid-cols-3">
+        <div ref={cardsRef} className="reveal reveal-delay-1 mt-14 grid gap-5 md:mt-20 md:grid-cols-3">
           {problems.map(({ icon: Icon, title, problem, result }) => (
-            <article key={title} className="surface surface-hover p-6">
-              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0071e3]/10 text-[#0071e3]"><Icon className="h-5 w-5" /></div>
-              <h3 className="text-xl font-semibold text-[#1d1d1f]">{title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#6e6e73]">{problem}</p>
-              <div className="mt-5 border-t border-[#0071e3]/10 pt-5">
-                <p className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">Qué hago</p>
-                <p className="mt-2 text-sm leading-relaxed text-[#1d1d1f]">{result}</p>
-              </div>
+            <article key={title} className="tile flex flex-col p-8 md:p-10">
+              <Icon className="h-8 w-8 text-[#0071e3]" strokeWidth={1.6} />
+              <h3 className="mt-6 text-[1.75rem] font-bold leading-tight tracking-[-0.025em] text-[#1d1d1f]">{title}</h3>
+              <p className="mt-4 text-[1.0625rem] leading-relaxed text-[#6e6e73]">{problem}</p>
+              <p className="mt-auto pt-8 text-[1.0625rem] font-semibold leading-relaxed text-[#1d1d1f]">{result}</p>
             </article>
           ))}
         </div>

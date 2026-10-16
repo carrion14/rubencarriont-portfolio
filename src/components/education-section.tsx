@@ -1,8 +1,7 @@
 "use client"
 
-import { ArrowDown, GraduationCap } from "lucide-react"
+import { ChevronRight, GraduationCap } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-import ScrollReveal from "@/components/ui/scroll-reveal"
 
 const education = [
   {
@@ -30,53 +29,30 @@ export default function EducationSection({ onNavigate }: { onNavigate: (section:
   const cardsRef = useScrollReveal<HTMLDivElement>()
 
   return (
-    <section className="relative flex w-full flex-col items-center justify-center px-8 py-24 sm:py-24">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:gap-12">
-        <div ref={titleRef} className="reveal">
-          <p className="eyebrow">Formación</p>
-          <h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
-            <GraduationCap className="mr-2 inline-block h-7 w-7 text-[#0071e3] align-middle" />
-            Educación
-          </h2>
+    <section className="band band-gray">
+      <div className="container-wide">
+        <div ref={titleRef} className="reveal text-center">
+          <p className="kicker">Formación</p>
+          <h2 className="headline mt-3">Cine, diseño <span className="headline-muted">y algo de código.</span></h2>
         </div>
 
-        <div ref={cardsRef} className="reveal reveal-delay-1 grid gap-3 sm:gap-5 grid-cols-2 sm:grid-cols-3">
-          {education.map((item, i) => (
-            <div
-              key={i}
-              className="group rounded-2xl bg-[rgba(255,255,255,0.5)] p-4 sm:p-7 transition-all duration-500 hover:bg-[rgba(255,255,255,0.75)] hover:shadow-sm"
-            >
-              <div className="mb-4 flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(0,113,227,0.1)]">
-                  <GraduationCap className="h-4 w-4 text-[#0071e3]" />
-                </div>
-                <span className="rounded-full bg-[rgba(0,113,227,0.07)] px-2.5 py-0.5 text-xs font-medium text-[#0071e3]">
-                  {item.period}
-                </span>
-              </div>
-              <h3 className="text-base font-semibold text-[#1d1d1f]">{item.title}</h3>
-              <p className="mt-1 text-sm font-medium text-[#6e6e73]">{item.school}</p>
-              <ScrollReveal
-                baseOpacity={0.45}
-                baseRotation={0.8}
-                blurStrength={1.2}
-                containerClassName="mt-2"
-                textClassName="text-sm leading-relaxed text-[#86868b]"
-                wordAnimationEnd="top 45%"
-              >
-                {item.description}
-              </ScrollReveal>
-            </div>
+        <div ref={cardsRef} className="reveal reveal-delay-1 mt-14 grid gap-5 md:mt-20 md:grid-cols-3">
+          {education.map((item) => (
+            <article key={item.title} className="tile p-8 md:p-10">
+              <GraduationCap className="h-8 w-8 text-[#0071e3]" strokeWidth={1.6} />
+              <p className="mt-6 text-sm text-[#86868b]">{item.period}</p>
+              <h3 className="mt-1 text-[1.5rem] font-bold leading-tight tracking-[-0.02em]">{item.title}</h3>
+              <p className="mt-1 text-[1.0625rem] text-[#1d1d1f]">{item.school}</p>
+              <p className="mt-4 text-[1.0625rem] leading-relaxed text-[#6e6e73]">{item.description}</p>
+            </article>
           ))}
         </div>
 
-        <button
-          onClick={() => onNavigate("projects")}
-          className="flex items-center gap-2 text-sm font-medium text-[#0071e3] transition-colors hover:text-blue-600"
-        >
-          Ver proyectos
-          <ArrowDown className="h-3 w-3" />
-        </button>
+        <div className="mt-12 text-center">
+          <button type="button" onClick={() => onNavigate("projects")} className="link-apple">
+            Ver proyectos <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
       </div>
     </section>
   )
