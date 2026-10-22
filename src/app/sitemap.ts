@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next"
 import { projects } from "@/lib/projects-data"
 import { portraitUrl, siteUrl } from "@/lib/seo"
 
-const lastModified = new Date("2026-10-16")
+const lastModified = new Date("2026-10-22")
 
 // Imágenes de los proyectos para Google Imágenes (solo fotos locales, sin vídeos ni embeds).
 const projectImages = projects

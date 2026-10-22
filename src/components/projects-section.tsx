@@ -14,6 +14,7 @@ const filters = [
   { key: "design", label: "Diseño" },
   { key: "content", label: "Contenido y redes" },
   { key: "web", label: "Web" },
+  { key: "ia", label: "IA" },
 ] as const
 
 type FilterKey = (typeof filters)[number]["key"]
@@ -39,17 +40,19 @@ function projectText(project: Project) {
 
 function projectMatchesFilter(project: Project, filter: FilterKey): boolean {
   if (filter === "all") return true
+  if (filter === "ia") return project.category === "ia" || !!project.usesAI
   return getProjectServiceKey(project) === filter
 }
 
 function getProjectServiceKey(project: Project): Exclude<FilterKey, "all"> {
+  if (project.category === "ia") return "ia"
   if (["karcher-instagram-ai-design", "karcher-amazon-banners", "cruz-cafune-concert"].includes(project.id)) return "content"
   if (["berbel-tattoo-web", "karcher-web-campaigns"].includes(project.id) || project.category === "web") return "web"
   return "design"
 }
 
 function getProjectServiceCategory(project: Project) {
-  const labels = { design: "Diseño", content: "Contenido y redes", web: "Web" }
+  const labels = { design: "Diseño", content: "Contenido y redes", web: "Web", ia: "IA" }
   return labels[getProjectServiceKey(project)]
 }
 
@@ -59,7 +62,7 @@ function getProjectYear(project: Project) {
 }
 
 function sortProjectsByPriority(items: Project[]) {
-  const priority = { content: 0, design: 1, web: 2 }
+  const priority = { ia: 0, content: 1, design: 2, web: 3 }
   return items
     .map((project, index) => ({ project, index }))
     .sort((a, b) => priority[getProjectServiceKey(a.project)] - priority[getProjectServiceKey(b.project)] || getProjectYear(b.project) - getProjectYear(a.project) || a.index - b.index)
@@ -68,6 +71,7 @@ function sortProjectsByPriority(items: Project[]) {
 
 function getProjectContext(project: Project) {
   if (project.tags.some((tag) => normalize(tag).includes("berbel"))) return "Berbel Tattoo"
+  if (project.id === "law-of-ash") return "carryon studio"
   const knownClients = ["Karcher", "Kärcher", "Bluesun", "CPP", "NTRSV", "Xomega", "Tecnocon", "Nike"]
   const clientTag = project.tags.find((tag) => knownClients.some((client) => normalize(tag).includes(normalize(client))))
   if (clientTag) return clientTag === "Karcher" ? "Kärcher España" : clientTag
@@ -93,6 +97,7 @@ function getSecondaryTags(project: Project) {
 
 function getResponsibility(project: Project) {
   const main = getMainCategory(project)
+  if (main === "IA") return "Diseño de juego, dirección de arte con IA generativa y desarrollo asistido por IA."
   if (main === "Web") return "Diseño web, experiencia de usuario y desarrollo frontend aplicado al proyecto."
   if (main === "Contenido y redes") return "Estrategia visual, composición, adaptación a formatos y producción de contenido para campañas o redes."
   return "Diseño gráfico, composición visual y preparación de entregables."
@@ -414,7 +419,7 @@ export default function ProjectsSection({ onNavigate }: { onNavigate: (section: 
           <p className="kicker">Portfolio</p>
           <h2 className="headline mt-3"><RevealWords text="Proyectos" /></h2>
           <p className="lead mx-auto mt-6 max-w-[640px]">
-            Trabajo real para Kärcher España, Berbel Tattoo y otros clientes, más algún proyecto propio. Abre cualquiera para ver las piezas y el contexto.
+            Trabajo real para Kärcher España, Berbel Tattoo y otros clientes, más algún proyecto propio como Law of Ash, un juego de cartas. En la pestaña IA están los trabajos donde la usé.
           </p>
         </div>
 

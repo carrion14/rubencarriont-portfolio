@@ -10,10 +10,33 @@ export interface Project {
   longDescription?: string;
   tools?: string[];
   externalUrl?: string;
+  usesAI?: boolean;
 }
 
 export const projects: Project[] = [
   // ===== 2026 =====
+  {
+    id: "law-of-ash",
+    title: "Law of Ash",
+    year: "2026",
+    category: "ia",
+    tags: ["Videojuego", "Roguelike de cartas", "Godot", "Dirección de arte"],
+    description: "Roguelike de cartas hecho en Godot donde las reglas también son cartas. Beta para Windows y Mac publicada en itch.io.",
+    images: [
+      "/img/projects/2026-law-of-ash/law-of-ash-banner.webp",
+      "/img/projects/2026-law-of-ash/menu-principal.webp",
+      "/img/projects/2026-law-of-ash/selector-el-sabio.webp",
+      "/img/projects/2026-law-of-ash/eleccion-build.webp",
+      "/img/projects/2026-law-of-ash/eleccion-leyes.webp",
+      "/img/projects/2026-law-of-ash/combate.webp",
+      "/img/projects/2026-law-of-ash/mapa.webp",
+      "/img/projects/2026-law-of-ash/tienda.webp",
+    ],
+    longDescription: "Juego propio, publicado como carryon studio. Antes de cada combate eliges dos leyes que afectan a todos, a ti y a los enemigos, y si son opuestas forman una paradoja que solo tú puedes aprovechar. La beta tiene tres actos de 15 pisos, 18 leyes, 9 paradojas y 40 reliquias. Todo el arte está generado con Magnific y el código lo escribí con ayuda de Codex y Claude. Lo que es mío es el diseño de las reglas, el equilibrio y la dirección visual: cada pantalla la maqueté antes de pasarla al motor. Lo publiqué en itch.io el 7 de octubre de 2026 y estoy juntando 100 € para sacarlo en Steam.",
+    tools: ["Godot", "Magnific", "Codex", "Claude", "Diseño de juego", "Maquetación de interfaz"],
+    externalUrl: "https://carryon-studio.itch.io/law-of-ash",
+    usesAI: true,
+  },
   {
     id: "berbel-tattoo-web",
     title: "Berbel Tattoo Web",
@@ -54,6 +77,7 @@ export const projects: Project[] = [
     longDescription: "Gestión de contenidos para el Instagram de Kärcher España, trabajando la planificación del perfil, el planteamiento de publicaciones, la edición de vídeo, el diseño de piezas y la adaptación de mensajes al formato social. La selección reúne la visión general del canal, un reel reproducible y una muestra cuidada de las publicaciones más representativas.",
     tools: ["Planificación de contenidos", "Edición de vídeo", "Diseño social", "Copywriting", "IA como apoyo"],
     externalUrl: "https://www.instagram.com/reel/DbYF5kUIawl/",
+    usesAI: true,
   },
   {
     id: "karcher-kira-b200-magazine",
@@ -161,6 +185,7 @@ export const projects: Project[] = [
     ],
     longDescription: "Conjunto de banners desarrollados durante 2026 para diferentes necesidades de la tienda de Amazon de Karcher. Me encargué de la idea creativa, la composición, la jerarquía visual y el proceso de producción de piezas adaptadas a formatos promocionales, landings, cabeceras y espacios de categoría. Algunas imágenes se apoyaron en IA para acelerar la generación de recursos y ampliar posibilidades visuales, manteniendo siempre el resultado dentro del lenguaje de marca.",
     tools: ["Photoshop", "Illustrator", "IA generativa"],
+    usesAI: true,
   },
   {
     id: "karcher-web-campaigns",
